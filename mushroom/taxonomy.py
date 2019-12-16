@@ -11,3 +11,4 @@ class Taxonomy(Base):
     family = Column(String)
     genus = Column(String)
     species = Column(String)
+    variant = Column(String)
