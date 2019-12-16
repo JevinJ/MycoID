@@ -4,8 +4,7 @@ from sqlalchemy import Column, Enum, Float, Integer, ForeignKey
 
 class Spores(Base):
     """Description of a mushrooms' spores."""
-    id = Column(Integer, primary_key=True)
-    mushroom_id = Column(Integer, ForeignKey('mushrooms.id'))
+    mushroom_id = Column(Integer, ForeignKey('mushrooms.id'), primary_key=True)
     color = Column(Enum)
     mezlers_reaction = Column(Enum)
     min_length = Column(Float)
