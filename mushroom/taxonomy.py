@@ -9,6 +9,6 @@ class Taxonomy(Base):
     name_origin = Column(String)
     order = Column(String)
     family = Column(String)
-    genus = Column(String)
-    species = Column(String)
+    genus = Column(String, nullable=False)
+    species = Column(String, nullable=False)
     variant = Column(String)
