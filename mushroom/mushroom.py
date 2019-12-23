@@ -8,7 +8,7 @@ class Mushroom(Base):
     __tablename__ = 'mushrooms'
     id = Column(Integer, primary_key=True)
     description = Column(String)
-    habitat = relationship('Habitat', uselist=False, backref='mushroom')
+    ecology = relationship('Ecology', uselist=False, backref='mushroom')
     smell = relationship('Smell', uselist=False, backref='mushroom')
     spores = relationship('Spores', uselist=False, backref='mushroom')
     taste = relationship('Taste', uselist=False, backref='mushroom')
