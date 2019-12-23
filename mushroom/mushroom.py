@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 class Mushroom(Base):
     """Information/data in common with all mushrooms."""
     __tablename__ = 'mushrooms'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     description = Column(String)
     ecology = relationship('Ecology', uselist=False, backref='mushroom')
     smell = relationship('Smell', uselist=False, backref='mushroom')
