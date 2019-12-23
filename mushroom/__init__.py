@@ -5,5 +5,6 @@ from .parts.stem import *
 from .parts.veil import *
 from .ecology import *
 from .edibility import *
+from .smell import *
 from .spores import *
 from .taxonomy import *
