@@ -18,7 +18,7 @@ class Ecology(Base):
 class MushroomTreeTag(Base):
     __tablename__ = 'mushroom_tree_tags'
     id = Column(Integer, primary_key=True)
-    mushroom_id = Column(Integer, ForeignKey('mushrooms.id'))
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
 
 
@@ -31,7 +31,7 @@ class TreeTag(Base):
 class MushroomSubstrateTag(Base):
     __tablename__ = 'mushroom_substrate_tags'
     id = Column(Integer, primary_key=True)
-    mushroom_id = Column(Integer, ForeignKey('mushrooms.id'))
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
 
 
