@@ -10,5 +10,5 @@ if __name__ == '__main__':
 
     engine = create_engine('sqlite:///mycomatch.db')
     Base.metadata.create_all(bind=engine)
-    session = sessionmaker(bind=engine)
+    session = sessionmaker(bind=engine)()
     app = MycoMatch()
