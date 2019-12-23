@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, ForeignKey, String
 
 
 class Taxonomy(Base):
+    __tablename__ = 'taxonomies'
     mushroom_id = Column(Integer, ForeignKey('mushrooms.id'), primary_key=True)
     common_names = Column(String)
     name_origin = Column(String)
