@@ -7,4 +7,5 @@ from .ecology import *
 from .edibility import *
 from .smell import *
 from .spores import *
+from .taste import *
 from .taxonomy import *
