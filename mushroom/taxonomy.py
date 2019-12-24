@@ -1,5 +1,6 @@
 from .base import Base
 from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Taxonomy(Base):
@@ -12,3 +13,7 @@ class Taxonomy(Base):
     genus = Column(String, nullable=False)
     species = Column(String, nullable=False)
     variant = Column(String)
+
+    @hybrid_property
+    def scientific_name(self):
+        return f'{self.genus} {self.species}'
