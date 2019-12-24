@@ -14,6 +14,7 @@ class Ecology(Base):
     in_area_type = Column(Enum)
     associated_trees = relationship('MushroomMycorrhizalHostTag')
     on_substrates = relationship('MushroomSubstrateTag')
+    parasitic_on = relationship('MushroomParasiticHostTag')
 
 
 class EcologyTypes(Base):
@@ -45,6 +46,12 @@ class SubstrateTag(TagTable):
     __tablename__ = 'substrate_tags'
 
 
+class MushroomParasiticHostTag(Base):
+    __tablename__ = 'mushroom_parasitic_host_tags'
+    id = Column(Integer, primary_key=True)
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
+    tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'))
 
 
-
+class ParasiticHostTag(TagTable):
+    __tablename__ = 'parasitic_host_tags'
