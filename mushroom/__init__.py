@@ -1,4 +1,5 @@
 from mushroom.mushroom import *
+from .description import *
 from .parts.cap import *
 from .parts.gills import *
 from .parts.stem import *
@@ -9,3 +10,4 @@ from .smell import *
 from .spores import *
 from .taste import *
 from .taxonomy import *
+from .wikipedia_url import *
