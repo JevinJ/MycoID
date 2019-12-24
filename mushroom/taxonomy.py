@@ -5,7 +5,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 
 class Taxonomy(Base):
     __tablename__ = 'taxonomies'
-    mushroom_id = Column(Integer, ForeignKey('mushrooms.id'), primary_key=True)
+    mushroom_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     common_names = Column(String)
     name_origin = Column(String)
     order = Column(String)

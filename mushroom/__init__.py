@@ -1,4 +1,4 @@
-from mushroom.mushroom import *
+from mushroom.fungus import *
 from .description import *
 from .parts.cap import *
 from .parts.gills import *

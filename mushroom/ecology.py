@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 class Ecology(Base):
     """Description of a mushrooms' habitat & ecology."""
     __tablename__ = 'ecology'
-    mushroom_id = Column(Integer, ForeignKey('mushrooms.id'), primary_key=True)
+    mushroom_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     type = Column(Enum(EcologyType))
     growth_habit = Column(Enum(GrowthHabit))
     in_area_type = Column(Enum)
