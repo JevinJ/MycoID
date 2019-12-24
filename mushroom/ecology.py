@@ -30,10 +30,6 @@ class MushroomMycorrhizalHostTag(Base):
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
 
 
-class MycorrhizalHostTag(Base, TagTable):
-    __tablename__ = 'mycorrhizal_host_tags'
-
-
 class MushroomSubstrateTag(Base):
     __tablename__ = 'mushroom_substrate_tags'
     id = Column(Integer, primary_key=True)
@@ -41,16 +37,21 @@ class MushroomSubstrateTag(Base):
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
 
 
-class SubstrateTag(Base, TagTable):
-    """Substrates for a saprophytic mushroom."""
-    __tablename__ = 'substrate_tags'
-
-
 class MushroomParasiticHostTag(Base):
     __tablename__ = 'mushroom_parasitic_host_tags'
     id = Column(Integer, primary_key=True)
     mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
     tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'))
+
+
+class MycorrhizalHostTag(Base, TagTable):
+    """Organisms which a fungus grows with symbiotically."""
+    __tablename__ = 'mycorrhizal_host_tags'
+
+
+class SubstrateTag(Base, TagTable):
+    """Substrates a saprophytic fungus consumes."""
+    __tablename__ = 'substrate_tags'
 
 
 class ParasiticHostTag(Base, TagTable):
