@@ -25,23 +25,20 @@ class EcologyTypes(Base):
 
 class MushroomMycorrhizalHostTag(Base):
     __tablename__ = 'mushroom_mycorrhizal_host_tags'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
-    tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    tag_id = Column(Integer, ForeignKey('substrate_tags.id'), primary_key=True)
 
 
 class MushroomSubstrateTag(Base):
     __tablename__ = 'mushroom_substrate_tags'
-    id = Column(Integer, primary_key=True)
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
-    tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    tag_id = Column(Integer, ForeignKey('substrate_tags.id'), primary_key=True)
 
 
 class MushroomParasiticHostTag(Base):
     __tablename__ = 'mushroom_parasitic_host_tags'
-    id = Column(Integer, primary_key=True)
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'))
-    tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'))
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'), primary_key=True)
 
 
 class MycorrhizalHostTag(Base, TagTable):
