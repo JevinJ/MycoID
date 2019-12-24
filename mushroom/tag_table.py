@@ -1,7 +1,6 @@
-from .base import Base
 from sqlalchemy import Column, Integer, String
 
 
-class TagTable(Base):
+class TagTable:
     id = Column(Integer, primary_key=True)
     title = Column(String)

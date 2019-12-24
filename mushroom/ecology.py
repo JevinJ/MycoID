@@ -30,7 +30,7 @@ class MushroomMycorrhizalHostTag(Base):
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
 
 
-class MycorrhizalHostTag(TagTable):
+class MycorrhizalHostTag(Base, TagTable):
     __tablename__ = 'mycorrhizal_host_tags'
 
 
@@ -41,7 +41,7 @@ class MushroomSubstrateTag(Base):
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'))
 
 
-class SubstrateTag(TagTable):
+class SubstrateTag(Base, TagTable):
     """Substrates for a saprophytic mushroom."""
     __tablename__ = 'substrate_tags'
 
@@ -53,5 +53,5 @@ class MushroomParasiticHostTag(Base):
     tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'))
 
 
-class ParasiticHostTag(TagTable):
+class ParasiticHostTag(Base, TagTable):
     __tablename__ = 'parasitic_host_tags'
