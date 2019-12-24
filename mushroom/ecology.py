@@ -15,6 +15,12 @@ class Ecology(Base):
     on_substrates = relationship('MushroomSubstrateTag')
 
 
+class EcologyTypes(Base):
+    __tablename__ = 'ecology_types'
+    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    ecology_type = Column(Enum(EcologyType), primary_key=True)
+
+
 class MushroomTreeTag(Base):
     __tablename__ = 'mushroom_tree_tags'
     id = Column(Integer, primary_key=True)
