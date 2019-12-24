@@ -54,4 +54,5 @@ class MushroomParasiticHostTag(Base):
 
 
 class ParasiticHostTag(Base, TagTable):
+    """Hosts which a fungus parasitizes."""
     __tablename__ = 'parasitic_host_tags'
