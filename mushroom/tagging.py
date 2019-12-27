@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String
 
 
 class TagTable:
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String)
 
 
