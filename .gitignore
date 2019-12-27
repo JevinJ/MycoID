@@ -113,6 +113,11 @@ venv.bak/
 .idea/**/tasks.xml
 .idea/**/dictionaries
 .idea/**/shelf
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
+vcs.xml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
@@ -160,3 +165,7 @@ fabric.properties
 
 # Explicitly allowed project files/folders
 !mushroom/*
+
+# Markdown Navigator plugin
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator/
