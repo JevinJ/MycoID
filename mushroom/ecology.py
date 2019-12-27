@@ -1,6 +1,6 @@
 from .db_base import Base
 from .enums import EcologyType, GrowthHabit
-from .tagging import TagTable
+from .tagging import TagTable, TagMapping
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -23,22 +23,16 @@ class EcologyTypes(Base):
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
-class MushroomMycorrhizalHostTag(Base):
+class MushroomMycorrhizalHostTag(TagMapping, Base):
     __tablename__ = 'mushroom_mycorrhizal_host_tags'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    tag_id = Column(Integer, ForeignKey('substrate_tags.id'), primary_key=True)
 
 
-class MushroomSubstrateTag(Base):
+class MushroomSubstrateTag(TagMapping, Base):
     __tablename__ = 'mushroom_substrate_tags'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    tag_id = Column(Integer, ForeignKey('substrate_tags.id'), primary_key=True)
 
 
-class MushroomParasiticHostTag(Base):
+class MushroomParasiticHostTag(TagMapping, Base):
     __tablename__ = 'mushroom_parasitic_host_tags'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'), primary_key=True)
 
 
 class MycorrhizalHostTag(Base, TagTable):
