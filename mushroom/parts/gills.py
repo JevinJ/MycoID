@@ -1,4 +1,4 @@
-from ..base import Base
+from ..db_base import Base
 from sqlalchemy import Column, ForeignKey, String, Integer, Enum
 
 

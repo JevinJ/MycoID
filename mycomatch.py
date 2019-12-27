@@ -4,7 +4,7 @@ class MycoMatch:
 
 if __name__ == '__main__':
     from mushroom import *
-    from mushroom.base import Base
+    from mushroom.db_base import Base
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
