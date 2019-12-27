@@ -1,11 +1,12 @@
 from ..db_base import Base
-from sqlalchemy import Column, Integer, Float, ForeignKey
+from sqlalchemy import Column, Enum, Integer, Float, ForeignKey
 
 
 class Stem(Base):
     """Description of a mushrooms' stem."""
     __tablename__ = 'stems'
     mushroom_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    type = Column(Enum)
     min_height = Column(Float)
     max_height = Column(Float)
     min_width = Column(Float)
