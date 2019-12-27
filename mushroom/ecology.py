@@ -1,6 +1,6 @@
 from .db_base import Base
 from .enums import EcologyType, GrowthHabit
-from .tag_table import TagTable
+from .tagging import TagTable
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
