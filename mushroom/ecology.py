@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 class Ecology(Base):
     """Description of a mushrooms' habitat & ecology."""
     __tablename__ = 'ecology'
-    mushroom_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     type = Column(Enum(EcologyType))
     growth_habit = Column(Enum(GrowthHabit))
     in_area_type = Column(Enum)
@@ -19,25 +19,25 @@ class Ecology(Base):
 
 class EcologyTypes(Base):
     __tablename__ = 'ecology_types'
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
 class MushroomMycorrhizalHostTag(Base):
     __tablename__ = 'mushroom_mycorrhizal_host_tags'
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'), primary_key=True)
 
 
 class MushroomSubstrateTag(Base):
     __tablename__ = 'mushroom_substrate_tags'
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     tag_id = Column(Integer, ForeignKey('substrate_tags.id'), primary_key=True)
 
 
 class MushroomParasiticHostTag(Base):
     __tablename__ = 'mushroom_parasitic_host_tags'
-    mushroom_id = Column(Integer, ForeignKey('ecology.mushroom_id'), primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     tag_id = Column(Integer, ForeignKey('parasitic_host_tags.id'), primary_key=True)
 
 

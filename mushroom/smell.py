@@ -4,5 +4,5 @@ from sqlalchemy import Column, Enum, Integer, ForeignKey
 
 class Smell(Base):
     __tablename__ = 'smells'
-    mushroom_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     smell = Column(Enum)
