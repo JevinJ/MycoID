@@ -8,6 +8,7 @@ class PartialVeil(Base):
     mushroom_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     color = Column(Enum)
     type = Column(Enum)
+    ring_type = Column(Enum)
 
 
 class UniversalVeil(Base):
