@@ -12,9 +12,9 @@ class Ecology(Base):
     type = Column(Enum(EcologyType))
     clustering_habit = Column(Enum(ClusteringHabit))
     in_area_type = Column(Enum)
-    associated_trees = relationship('FungiMycorrhizalHost')
-    on_substrates = relationship('FungiSaprobicSubstrate')
-    parasitic_on = relationship('FungiParasiticHost')
+    mycorrhizal_hosts = relationship('FungiMycorrhizalHost')
+    saprobic_substrates = relationship('FungiSaprobicSubstrate')
+    parasitic_hosts = relationship('FungiParasiticHost')
 
 
 class EcologyTypes(Base):
