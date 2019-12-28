@@ -7,7 +7,7 @@ class EcologyType(Flag):
     parasitic = auto()
 
 
-class GrowthHabit(Flag):
+class ClusteringHabit(Flag):
     singular = auto()
     gregarious = auto()
     troop = auto()

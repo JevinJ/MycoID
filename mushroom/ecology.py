@@ -1,5 +1,5 @@
 from .db_base import Base
-from .enums import EcologyType, GrowthHabit
+from .enums import EcologyType, ClusteringHabit
 from .tagging import TagTable, TagMapping
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
@@ -10,7 +10,7 @@ class Ecology(Base):
     __tablename__ = 'ecology'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     type = Column(Enum(EcologyType))
-    growth_habit = Column(Enum(GrowthHabit))
+    clustering_habit = Column(Enum(ClusteringHabit))
     in_area_type = Column(Enum)
     associated_trees = relationship('MushroomMycorrhizalHostTag')
     on_substrates = relationship('MushroomSubstrateTag')
