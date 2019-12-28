@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declared_attr
 
 class TagTable:
     id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String)
+    name = Column(String)
 
 
 class TagMapping:
