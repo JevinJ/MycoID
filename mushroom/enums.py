@@ -1,13 +1,13 @@
-from enum import Enum, Flag, auto
+from enum import Enum, auto
 
 
-class EcologyType(Flag):
+class EcologyType(Enum):
     mycorrhizal = auto()
     saprobic = auto()
     parasitic = auto()
 
 
-class ClusteringHabit(Flag):
+class ClusteringHabit(Enum):
     singular = auto()
     gregarious = auto()
     troop = auto()
