@@ -26,4 +26,4 @@ class CommonName(Base):
     __tablename__ = 'common_names'
     id = Column(Integer, primary_key=True)
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    value = Column(String(length=64))
+    value = Column(String(length=64), nullable=False)
