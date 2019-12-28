@@ -8,11 +8,13 @@ class Taxonomy(Base):
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     common_names = Column(String)
     name_origin = Column(String)
-    order = Column(String)
-    family = Column(String)
-    genus = Column(String, nullable=False)
-    species = Column(String, nullable=False)
-    variant = Column(String)
+    phylum = Column(String(length=64))
+    class_ = Column(String(length=64))
+    order = Column(String(length=64))
+    family = Column(String(length=64))
+    genus = Column(String(length=64), nullable=False)
+    species = Column(String(length=64), nullable=False)
+    variant = Column(String(length=64))
 
     @hybrid_property
     def scientific_name(self):
