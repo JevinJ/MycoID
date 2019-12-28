@@ -12,9 +12,9 @@ class Ecology(Base):
     type = Column(Enum(EcologyType))
     clustering_habit = Column(Enum(ClusteringHabit))
     in_area_type = Column(Enum)
-    associated_trees = relationship('MushroomMycorrhizalHostTag')
-    on_substrates = relationship('MushroomSubstrateTag')
-    parasitic_on = relationship('MushroomParasiticHostTag')
+    associated_trees = relationship('FungiMycorrhizalHost')
+    on_substrates = relationship('FungiSaprobicSubstrate')
+    parasitic_on = relationship('FungiParasiticHost')
 
 
 class EcologyTypes(Base):
@@ -23,16 +23,16 @@ class EcologyTypes(Base):
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
-class MushroomMycorrhizalHostTag(TagMapping, Base):
-    __tablename__ = 'mushroom_mycorrhizal_host_tags'
+class FungiMycorrhizalHost(TagMapping, Base):
+    __tablename__ = 'fungi_mycorrhizal_hosts'
 
 
-class MushroomSubstrateTag(TagMapping, Base):
-    __tablename__ = 'mushroom_substrate_tags'
+class FungiSaprobicSubstrate(TagMapping, Base):
+    __tablename__ = 'fungi_saprobic_substrates'
 
 
-class MushroomParasiticHostTag(TagMapping, Base):
-    __tablename__ = 'mushroom_parasitic_host_tags'
+class FungiParasiticHost(TagMapping, Base):
+    __tablename__ = 'fungi_parasitic_hosts'
 
 
 class MycorrhizalHostTag(Base, TagTable):
