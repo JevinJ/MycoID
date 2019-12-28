@@ -1,12 +1,13 @@
 from .db_base import Base
 from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Taxonomy(Base):
     __tablename__ = 'taxonomies'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    common_names = Column(String)
+    common_names = relationship('CommonName')
     name_origin = Column(String)
     phylum = Column(String(length=64))
     class_ = Column(String(length=64))
@@ -19,3 +20,9 @@ class Taxonomy(Base):
     @hybrid_property
     def scientific_name(self):
         return f'{self.genus} {self.species}'
+
+
+class CommonName(Base):
+    __tablename__ = 'common_names'
+    fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    value = Column(String(length=64))
