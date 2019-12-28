@@ -35,16 +35,16 @@ class FungiParasiticHost(TagMapping, Base):
     __tablename__ = 'fungi_parasitic_hosts'
 
 
-class MycorrhizalHostTag(Base, TagTable):
+class MycorrhizalHost(Base, TagTable):
     """Organisms which a fungus grows with symbiotically."""
-    __tablename__ = 'mycorrhizal_host_tags'
+    __tablename__ = 'mycorrhizal_hosts'
 
 
-class SubstrateTag(Base, TagTable):
+class SaprobicSubstrate(Base, TagTable):
     """Substrates a saprophytic fungus consumes."""
-    __tablename__ = 'substrate_tags'
+    __tablename__ = 'saprobic_substrates'
 
 
-class ParasiticHostTag(Base, TagTable):
+class ParasiticHost(Base, TagTable):
     """Hosts which a fungus parasitizes."""
-    __tablename__ = 'parasitic_host_tags'
+    __tablename__ = 'parasitic_hosts'
