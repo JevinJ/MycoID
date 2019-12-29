@@ -9,7 +9,7 @@ class Ecology(Base):
     """Description of a mushrooms' habitat & ecology."""
     __tablename__ = 'ecology'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    types = Column(Enum(EcologyType))
+    types = relationship('EcologyTypes')
     clustering_habit = Column(Enum(ClusteringHabit))
     in_area_type = Column(Enum)
     mycorrhizal_hosts = relationship('FungiMycorrhizalHost')
@@ -23,16 +23,20 @@ class EcologyTypes(Base):
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
-class FungiMycorrhizalHost(TagMapping, Base):
+class FungiMycorrhizalHost(Base):
     __tablename__ = 'fungi_mycorrhizal_hosts'
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'))
+    mycorrhizal_host_id = Column(Integer)
 
 
-class FungiSaprobicSubstrate(TagMapping, Base):
+class FungiSaprobicSubstrate(Base):
     __tablename__ = 'fungi_saprobic_substrates'
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'))
 
 
-class FungiParasiticHost(TagMapping, Base):
+class FungiParasiticHost(Base):
     __tablename__ = 'fungi_parasitic_hosts'
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'))
 
 
 class MycorrhizalHost(Base, TagTable):
