@@ -19,7 +19,7 @@ class Taxon(Base):
     variant = Column(String(length=64))
 
     @hybrid_property
-    def scientific_name(self):
+    def scientific_name(self) -> str:
         return f'{self.genus} {self.species}'
 
 
