@@ -1,5 +1,6 @@
 from .db_base import Base
 from .enums import EcologyType, ClusteringHabit
+from .mixins import HasReportConsensus
 from .tagging import TagTable
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
@@ -17,25 +18,25 @@ class Ecology(Base):
     parasitic_hosts = relationship('FungiParasiticHost')
 
 
-class EcologyTypes(Base):
+class EcologyTypes(Base, HasReportConsensus):
     __tablename__ = 'ecology_types'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
-class FungiMycorrhizalHost(Base):
+class FungiMycorrhizalHost(Base, HasReportConsensus):
     __tablename__ = 'fungi_mycorrhizal_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     mycorrhizal_host_id = Column(Integer, ForeignKey('mycorrhizal_hosts.id'), primary_key=True)
 
 
-class FungiSaprobicSubstrate(Base):
+class FungiSaprobicSubstrate(Base, HasReportConsensus):
     __tablename__ = 'fungi_saprobic_substrates'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     saprobic_substrate_id = Column(Integer, ForeignKey('saprobic_substrates.id'), primary_key=True)
 
 
-class FungiParasiticHost(Base):
+class FungiParasiticHost(Base, HasReportConsensus):
     __tablename__ = 'fungi_parasitic_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     parasitic_host_id = Column(Integer, ForeignKey('parasitic_hosts.id'), primary_key=True)
