@@ -11,7 +11,7 @@ class Ecology(Base):
     __tablename__ = 'ecology'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     types = relationship('EcologyTypes')
-    clustering_habit = Column(Enum(ClusteringHabit))
+    clustering_habit = relationship('ClusteringHabits')
     in_area_type = Column(Enum)
     mycorrhizal_hosts = relationship('FungiMycorrhizalHost')
     saprobic_substrates = relationship('FungiSaprobicSubstrate')
