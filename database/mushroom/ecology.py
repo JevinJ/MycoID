@@ -1,4 +1,4 @@
-from .db_base import Base
+from database.db_base import Base
 from .enums import EcologyType, ClusteringHabit
 from .mixins import HasReportConsensus
 from .tagging import TagTable

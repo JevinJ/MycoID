@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey, String
-from ..db_base import Base
+from database.db_base import Base
 
 
 class Cap(Base):

@@ -1,4 +1,4 @@
-from .db_base import Base
+from database.db_base import Base
 from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.hybrid import hybrid_property
