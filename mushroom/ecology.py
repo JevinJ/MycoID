@@ -25,18 +25,20 @@ class EcologyTypes(Base):
 
 class FungiMycorrhizalHost(Base):
     __tablename__ = 'fungi_mycorrhizal_hosts'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'))
-    mycorrhizal_host_id = Column(Integer)
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    mycorrhizal_host_id = Column(Integer, ForeignKey('mycorrhizal_hosts.id'), primary_key=True)
 
 
 class FungiSaprobicSubstrate(Base):
     __tablename__ = 'fungi_saprobic_substrates'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'))
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    saprobic_substrate_id = Column(Integer, ForeignKey('saprobic_substrates.id'), primary_key=True)
 
 
 class FungiParasiticHost(Base):
     __tablename__ = 'fungi_parasitic_hosts'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'))
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    parasitic_host_id = Column(Integer, ForeignKey('parasitic_hosts.id'), primary_key=True)
 
 
 class MycorrhizalHost(Base, TagTable):
