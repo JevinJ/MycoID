@@ -12,7 +12,7 @@ class Fungus(Base):
     smell = relationship('Smell', uselist=False, backref='fungus')
     spores = relationship('Spores', uselist=False, backref='fungus')
     taste = relationship('Taste', uselist=False, backref='fungus')
-    taxonomy = relationship('Taxonomy', uselist=False, backref='fungus')
+    taxonomy = relationship('Taxon', uselist=False, backref='fungus')
     wikipedia_url = relationship('WikipediaUrl', uselist=False, backref='fungus')
 
 

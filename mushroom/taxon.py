@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
-class Taxonomy(Base):
+class Taxon(Base):
     __tablename__ = 'taxonomies'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     common_names = relationship('CommonName')
