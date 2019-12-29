@@ -5,6 +5,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Taxon(Base):
+    """Taxonomic rank, common names, or other name information about a fungus."""
     __tablename__ = 'taxonomies'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     common_names = relationship('CommonName')
