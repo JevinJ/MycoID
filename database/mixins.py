@@ -8,3 +8,8 @@ class HasReportConsensus:
      For example, if a fungus is tagged as associating with pine trees more often than oak,
      the consensus for pine would be higher."""
     report_consensus = db.Column(db.Integer, default=1, nullable=False)
+
+
+class TagTable:
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(64))
