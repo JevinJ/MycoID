@@ -1,4 +1,4 @@
-from mushroom.fungus import *
+from database.mushroom.fungus import *
 from .color import *
 from .description import *
 from .parts.cap import *
