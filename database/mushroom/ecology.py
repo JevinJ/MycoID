@@ -24,6 +24,12 @@ class EcologyTypes(Base, HasReportConsensus):
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
+class ClusteringHabits(Base, HasReportConsensus):
+    __tablename__ = 'clustering_habits'
+    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    type = Column(Enum(ClusteringHabit), primary_key=True)
+
+
 class FungiMycorrhizalHost(Base, HasReportConsensus):
     __tablename__ = 'fungi_mycorrhizal_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
