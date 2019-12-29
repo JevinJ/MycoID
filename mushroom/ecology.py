@@ -9,7 +9,7 @@ class Ecology(Base):
     """Description of a mushrooms' habitat & ecology."""
     __tablename__ = 'ecology'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    type = Column(Enum(EcologyType))
+    types = Column(Enum(EcologyType))
     clustering_habit = Column(Enum(ClusteringHabit))
     in_area_type = Column(Enum)
     mycorrhizal_hosts = relationship('FungiMycorrhizalHost')
