@@ -10,5 +10,5 @@ from .edibility import *
 from .smell import *
 from .spores import *
 from .taste import *
-from .taxonomy import *
+from .taxon import *
 from .wikipedia_url import *
