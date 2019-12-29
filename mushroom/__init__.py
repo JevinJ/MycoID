@@ -1,4 +1,5 @@
 from mushroom.fungus import *
+from .color import *
 from .description import *
 from .parts.cap import *
 from .parts.gills import *
