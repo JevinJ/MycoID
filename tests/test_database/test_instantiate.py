@@ -11,8 +11,8 @@ def test_should_create_all(db_engine):
 
 
 all_orms = []
-for _, obj in inspect.getmembers(sys.modules[__name__]):
-    if inspect.isclass(obj) and isinstance(obj, DeclarativeMeta):
+for _, obj in inspect.getmembers(sys.modules[__name__], predicate=inspect.isclass):
+    if isinstance(obj, DeclarativeMeta):
         all_orms.append(obj)
 
 
