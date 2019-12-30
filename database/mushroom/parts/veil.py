@@ -1,8 +1,8 @@
-from database.db_base import Base
+from database.db_base import BaseModel
 from sqlalchemy import Column, Enum, Integer, ForeignKey
 
 
-class PartialVeil(Base):
+class PartialVeil(BaseModel):
     """Description of a mushrooms' partial veil."""
     __tablename__ = 'partial_veils'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
@@ -11,7 +11,7 @@ class PartialVeil(Base):
     ring_type = Column(Enum)
 
 
-class UniversalVeil(Base):
+class UniversalVeil(BaseModel):
     """Description of a mushrooms' universal veil(volva)."""
     __tablename__ = 'universal_veils'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)

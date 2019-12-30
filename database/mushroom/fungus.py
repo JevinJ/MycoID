@@ -1,9 +1,9 @@
-from database.db_base import Base
+from database.db_base import BaseModel
 from sqlalchemy import Column, Integer
 from sqlalchemy.orm import relationship
 
 
-class Fungus(Base):
+class Fungus(BaseModel):
     """Information/data in common with all fungi."""
     __tablename__ = 'fungi'
     id = Column(Integer, primary_key=True, autoincrement=True)

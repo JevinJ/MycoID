@@ -1,10 +1,10 @@
-from database.db_base import Base
+from database.db_base import BaseModel
 from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
-class Taxon(Base):
+class Taxon(BaseModel):
     """Taxonomic rank, common names, or other name information about a fungus."""
     __tablename__ = 'taxonomies'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
@@ -23,7 +23,7 @@ class Taxon(Base):
         return f'{self.genus} {self.species}'
 
 
-class CommonName(Base):
+class CommonName(BaseModel):
     __tablename__ = 'common_names'
     id = Column(Integer, primary_key=True)
     fungi_id = Column(Integer, ForeignKey('taxonomies.fungi_id'), primary_key=True)
