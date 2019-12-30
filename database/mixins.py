@@ -1,4 +1,6 @@
+from .unit_registry import ureg
 import sqlalchemy as db
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class HasReportConsensus:
@@ -8,6 +10,42 @@ class HasReportConsensus:
      For example, if a fungus is tagged as associating with pine trees more often than oak,
      the consensus for pine would be higher."""
     report_consensus = db.Column(db.Integer, default=1, nullable=False)
+
+
+class HasWidth:
+    _width = db.Column(db.String(32))
+
+    @hybrid_property
+    def width(self) -> ureg.Quantity:
+        return ureg.Quantity(self._width)
+
+    @width.setter
+    def width(self, value: ureg.Quantity):
+        _width = str(value)
+
+
+class HasHeight:
+    _height = db.Column(db.String(32))
+
+    @hybrid_property
+    def height(self) -> ureg.Quantity:
+        return ureg.Quantity(self._height)
+
+    @height.setter
+    def height(self, value: ureg.Quantity):
+        _height = str(value)
+
+
+class HasLength:
+    _length = db.Column(db.String(32))
+
+    @hybrid_property
+    def length(self) -> ureg.Quantity:
+        return ureg.Quantity(self._length)
+
+    @length.setter
+    def length(self, value: ureg.Quantity):
+        _length = str(value)
 
 
 class TagTable:
