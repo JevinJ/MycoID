@@ -1,4 +1,4 @@
-from .unit_registry import ureg
+from unit_registry import ureg
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.hybrid import hybrid_property
 
