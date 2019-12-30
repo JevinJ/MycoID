@@ -16,4 +16,4 @@ class Cap(Base):
 class CapDimensions(Base, HasWidth):
     __tablename__ = 'cap_dimensions'
     id = Column(Integer, primary_key=True)
-    fungi_id = Column(Integer, ForeignKey('caps.fungi_id'))
+    fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
