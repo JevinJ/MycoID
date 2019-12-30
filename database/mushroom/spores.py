@@ -1,4 +1,4 @@
-from ..mixins import HasWidth, HasLength
+from ..mixins import HasWidth, HasLength, HasReportConsensus
 from database.db_base import Base
 from sqlalchemy import Column, Enum, Integer, ForeignKey
 from sqlalchemy.orm import relationship
@@ -8,7 +8,7 @@ class Spores(Base):
     """Description of a mushrooms' spores."""
     __tablename__ = 'spores'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    color = Column(Enum)
+    color = relationship('SporeColor')
     mezlers_reaction = Column(Enum)
     dimensions = relationship('SporeDimensions')
     shape = Column(Enum)
@@ -19,4 +19,10 @@ class SporeDimensions(Base, HasWidth, HasLength):
     __tablename__ = 'spore_dimensions'
     id = Column(Integer, primary_key=True)
     fungi_id = Column(Integer, ForeignKey('spores.fungi_id'), primary_key=True)
+
+
+class SporeColor(Base, HasReportConsensus):
+    __tablename__ = 'spore_colors'
+    fungi_id = Column(Integer, ForeignKey('spores.fungi_id'), primary_key=True)
+    color_id = Column(Integer, ForeignKey('colors.id'), primary_key=True)
 
