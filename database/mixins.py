@@ -49,5 +49,5 @@ class HasLength:
 
 
 class TagTable:
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String(64))
