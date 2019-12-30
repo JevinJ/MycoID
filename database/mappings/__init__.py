@@ -1,14 +1,11 @@
-from database.mappings.fungus import *
-from .color import *
-from .description import *
-from .mushroom_parts.cap import *
-from .mushroom_parts.gills import *
-from .mushroom_parts.stem import *
-from .mushroom_parts.veil import *
-from .ecology import *
-from .edibility import *
-from .smell import *
-from .spores import *
-from .taste import *
-from .taxon import *
-from .wikipedia_url import *
+from .color import Color
+from .description import Description
+from .ecology import ClusteringHabits, Ecology, EcologyTypes, MycorrhizalHost, ParasiticHost, \
+                     SaprobicSubstrate, FungiMycorrhizalHost, FungiParasiticHost, FungiSaprobicSubstrate
+from .edibility import Edibility
+from .fungus import Fungus
+from .smell import Smell
+from .spores import Spores, SporeColor, SporeDimensions
+from .taste import Taste
+from .taxon import Taxon
+from .wikipedia_url import WikipediaUrl
