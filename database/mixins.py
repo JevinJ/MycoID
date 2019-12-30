@@ -1,5 +1,5 @@
 from .unit_registry import ureg
-import sqlalchemy as db
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
@@ -9,11 +9,11 @@ class HasReportConsensus:
      for sorting to determine the most common traits, as well as removing false traits.
      For example, if a fungus is tagged as associating with pine trees more often than oak,
      the consensus for pine would be higher."""
-    report_consensus = db.Column(db.Integer, default=1, nullable=False)
+    report_consensus = Column(Integer, default=1, nullable=False)
 
 
 class HasWidth:
-    _width = db.Column(db.String(32))
+    _width = Column(String(32))
 
     @hybrid_property
     def width(self) -> ureg.Quantity:
@@ -25,7 +25,7 @@ class HasWidth:
 
 
 class HasHeight:
-    _height = db.Column(db.String(32))
+    _height = Column(String(32))
 
     @hybrid_property
     def height(self) -> ureg.Quantity:
@@ -37,7 +37,7 @@ class HasHeight:
 
 
 class HasLength:
-    _length = db.Column(db.String(32))
+    _length = Column(String(32))
 
     @hybrid_property
     def length(self) -> ureg.Quantity:
@@ -49,5 +49,5 @@ class HasLength:
 
 
 class TagTable:
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64))
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(64))
