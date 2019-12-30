@@ -1,4 +1,4 @@
-from database.mushroom import *
+from database.mappings import *
 from database.db_base import BaseModel
 import pytest
 from sqlalchemy.ext.declarative import DeclarativeMeta

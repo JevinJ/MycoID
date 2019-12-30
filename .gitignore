@@ -165,7 +165,7 @@ fabric.properties
 .idea/httpRequests
 
 # Explicitly allowed project files/folders
-!database/mushroom/*
+!database/mappings/*
 
 # Markdown Navigator plugin
 .idea/**/markdown-navigator.xml
