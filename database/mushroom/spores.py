@@ -1,5 +1,7 @@
+from ..mixins import HasWidth, HasLength
 from database.db_base import Base
-from sqlalchemy import Column, Enum, Float, Integer, ForeignKey
+from sqlalchemy import Column, Enum, Integer, ForeignKey
+from sqlalchemy.orm import relationship
 
 
 class Spores(Base):
@@ -8,11 +10,13 @@ class Spores(Base):
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     color = Column(Enum)
     mezlers_reaction = Column(Enum)
-    min_length = Column(Float)
-    max_length = Column(Float)
-    min_width = Column(Float)
-    max_width = Column(Float)
+    dimensions = relationship('SporeDimensions')
     shape = Column(Enum)
     ornamentation = Column(Enum)
 
+
+class SporeDimensions(Base, HasWidth, HasLength):
+    __tablename__ = 'spore_dimensions'
+    id = Column(Integer, primary_key=True)
+    fungi_id = Column(Integer, ForeignKey('spores.fungi_id'), primary_key=True)
 
