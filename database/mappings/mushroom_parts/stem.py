@@ -14,7 +14,7 @@ class Stem(BaseModel):
 
 class StemColor(BaseModel, HasColor):
     __tablename__ = 'stem_colors'
-    fungi_id = Column(Integer, ForeignKey('stems.id'))
+    fungi_id = Column(Integer, ForeignKey('stems.fungi_id'))
 
 
 class StemDimensions(BaseModel, HasWidth, HasHeight):
