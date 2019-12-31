@@ -6,7 +6,7 @@ from .edibility import Edibility
 from .fungus import Fungus
 from .mushroom_parts.cap import Cap, CapColor, CapDimensions
 from .mushroom_parts.gills import GillColor, Gills
-from .mushroom_parts.stem import Stem, StemDimensions
+from .mushroom_parts.stem import Stem, StemColor, StemDimensions
 from .mushroom_parts.veil import PartialVeil, UniversalVeil
 from .smell import Smell
 from .spores import Spores, SporeColor, SporeDimensions
