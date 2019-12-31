@@ -1,13 +1,8 @@
 from database.mappings import *
-from database.db_base import BaseModel
 import pytest
 from sqlalchemy.ext.declarative import DeclarativeMeta
 import inspect
 import sys
-
-
-def test_should_create_all(db_engine):
-    BaseModel.metadata.create_all(bind=db_engine)
 
 
 all_orms = []
