@@ -3,12 +3,12 @@ class MycoMatch:
 
 
 if __name__ == '__main__':
-    from database.mushroom import *
-    from database.db_base import Base
+    from database.mappings import *
+    from database.db_base import BaseModel
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
     engine = create_engine('sqlite:///mycomatch.db')
-    Base.metadata.create_all(bind=engine)
+    BaseModel.metadata.create_all(bind=engine)
     session = sessionmaker(bind=engine)()
     app = MycoMatch()
