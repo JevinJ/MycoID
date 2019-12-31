@@ -1,4 +1,4 @@
-from ...mixins import HasColor, HasHeight, HasWidth
+from database.mixins import HasColor, HasHeight, HasWidth
 from database.db_base import BaseModel
 from sqlalchemy import Column, Enum, Integer, ForeignKey
 from sqlalchemy.orm import relationship
