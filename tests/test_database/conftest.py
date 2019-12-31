@@ -5,8 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 @fixture
 def db_engine():
-    engine = create_engine('sqlite:///:memory:')
-    yield engine
+    return create_engine('sqlite:///:memory:')
 
 
 @fixture
