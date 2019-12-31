@@ -1,5 +1,5 @@
 from database.db_base import BaseModel
-from .enums import EcologyType, ClusteringHabit
+from database.enums import EcologyType, ClusteringHabit
 from database.mixins import HasReportConsensus, TagTable
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
