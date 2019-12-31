@@ -1,5 +1,6 @@
 from unit_registry import ureg
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
@@ -10,6 +11,10 @@ class HasReportConsensus:
      For example, if a fungus is tagged as associating with pine trees more often than oak,
      the consensus for pine would be higher."""
     report_consensus = Column(Integer, default=1, nullable=False)
+
+
+class HasColor:
+    color_id = Column(Integer, ForeignKey('colors.id'), primary_key=True)
 
 
 class HasWidth:
