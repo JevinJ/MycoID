@@ -14,7 +14,9 @@ class HasReportConsensus:
 
 
 class HasColor:
-    color_id = Column(Integer, ForeignKey('colors.id'), primary_key=True)
+    @declared_attr
+    def color_id(self):
+        return Column(Integer, ForeignKey('colors.id'), primary_key=True)
 
 
 class HasWidth:
