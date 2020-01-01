@@ -45,6 +45,11 @@ class GillSpacingType(Enum):
     crowded = auto()
 
 
+class GillForkingType(Enum):
+    forking = auto()
+    anatomosing = auto()
+
+
 class CapShape(Enum):
     campanulate = auto()
     conical = auto()
