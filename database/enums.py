@@ -27,6 +27,17 @@ class EdibilityType(Enum):
     unknown = auto()
 
 
+class GillAttachmentType(Enum):
+    adnate = auto()
+    adnexed = auto()
+    decurrent = auto()
+    emarginate = auto()
+    free = auto()
+    seceding = auto()
+    sinuate = auto()
+    subdecurrent = auto()
+
+
 class CapShape(Enum):
     campanulate = auto()
     conical = auto()
