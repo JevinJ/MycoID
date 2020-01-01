@@ -38,6 +38,13 @@ class GillAttachmentType(Enum):
     subdecurrent = auto()
 
 
+class GillSpacingType(Enum):
+    distant = auto()
+    subdistant = auto()
+    close = auto()
+    crowded = auto()
+
+
 class CapShape(Enum):
     campanulate = auto()
     conical = auto()
