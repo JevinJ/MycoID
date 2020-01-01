@@ -13,7 +13,14 @@ class Gills(BaseModel):
     closeness = relationship('GillSpacing')
     color = relationship('GillColor')
     forking = Column(String)
-    has_lamellulae = Column(Boolean)
+    has_lamellulae = relationship('GillLamellulae')
+
+
+class GillLamellulae(BaseModel, HasReportConsensus):
+    """Describes if mushroom's gills have 'short gills'(Lamellulae)"""
+    __tablename__ = 'gill_lamellulae'
+    fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
+    value = Column(Boolean)
 
 
 class GillColor(BaseModel, HasReportConsensus):
