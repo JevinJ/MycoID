@@ -1,7 +1,7 @@
 from ...mixins import HasReportConsensus
 from database.db_base import BaseModel
 from database.enums import GillAttachmentType, GillSpacingType
-from sqlalchemy import Boolean, Column, ForeignKey, String, Integer, Enum
+from sqlalchemy import Column, ForeignKey, String, Integer, Enum
 from sqlalchemy.orm import relationship
 
 
@@ -13,14 +13,17 @@ class Gills(BaseModel):
     closeness = relationship('GillSpacing')
     color = relationship('GillColor')
     forking = Column(String)
-    has_lamellulae = relationship('GillLamellulae')
+    lamellulae_tiers = relationship('GillLamellulaeTiers')
 
 
-class GillLamellulae(BaseModel, HasReportConsensus):
-    """Describes if mushroom's gills have 'short gills'(Lamellulae)"""
-    __tablename__ = 'gill_lamellulae'
+class GillLamellulaeTiers(BaseModel, HasReportConsensus):
+    """The number of 'short gills'(Lamellulae) tiers. Lamellulae are gills
+     that start at the margins of the cap but don't reach the stem. Each tier is
+     a different distance to the stem. Tiers are usually 1-4, if they exist.
+    """
+    __tablename__ = 'gill_lamellulae_tiers'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
-    value = Column(Boolean)
+    value = Column(Integer)
 
 
 class GillColor(BaseModel, HasReportConsensus):
