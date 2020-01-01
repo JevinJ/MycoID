@@ -1,7 +1,7 @@
 from ...mixins import HasReportConsensus
 from database.db_base import BaseModel
 from database.enums import GillAttachmentType, GillSpacingType
-from sqlalchemy import Column, ForeignKey, String, Integer, Enum
+from sqlalchemy import Boolean, Column, ForeignKey, String, Integer, Enum
 from sqlalchemy.orm import relationship
 
 
@@ -13,6 +13,7 @@ class Gills(BaseModel):
     closeness = relationship('GillSpacing')
     color = relationship('GillColor')
     forking = Column(String)
+    has_lamellulae = Column(Boolean)
 
 
 class GillColor(BaseModel, HasReportConsensus):
