@@ -1,3 +1,4 @@
+from database.mappings import Tag
 from database.mixins import HasReportConsensus, HasTag, HasColor
 from database.db_base import BaseModel
 from sqlalchemy import Column, ForeignKey, Integer
@@ -43,3 +44,15 @@ class GillAttachment(BaseModel, HasReportConsensus, HasTag):
 class GillSpacing(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'gill_spacing'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
+
+
+class GillForkingType(Tag):
+    __mapper_args___ = {'polymorphic_identity': 'gill_forking_type'}
+
+
+class HymeniumAttachmentType(Tag):
+    __mapper_args___ = {'polymorphic_identity': 'hymenium_attachment_type'}
+
+
+class GillSpacingType(Tag):
+    __mapper_args___ = {'polymorphic_identity': 'gill_spacing_type'}
