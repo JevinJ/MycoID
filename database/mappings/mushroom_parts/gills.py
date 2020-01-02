@@ -1,6 +1,6 @@
 from database.mixins import HasReportConsensus, HasTag, HasColor
 from database.db_base import BaseModel
-from sqlalchemy import Column, ForeignKey, Integer, Enum
+from sqlalchemy import Column, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
 
