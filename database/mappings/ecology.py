@@ -1,7 +1,7 @@
 from database.db_base import BaseModel
 from database.enums import EcologyType, ClusteringHabit
 from database.mappings.tag import Tag
-from database.mixins import HasReportConsensus
+from database.mixins import HasReportConsensus, HasTag
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -18,34 +18,29 @@ class Ecology(BaseModel):
     parasitic_hosts = relationship('FungiParasiticHost')
 
 
-class EcologyTypes(BaseModel, HasReportConsensus):
+class EcologyTypes(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'ecology_types'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
 class ClusteringHabits(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'clustering_habits'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    type = Column(Enum(ClusteringHabit), primary_key=True)
 
 
-class FungiMycorrhizalHost(BaseModel, HasReportConsensus):
+class FungiMycorrhizalHost(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'fungi_mycorrhizal_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    mycorrhizal_host_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
 
 
-class FungiSaprobicSubstrate(BaseModel, HasReportConsensus):
+class FungiSaprobicSubstrate(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'fungi_saprobic_substrates'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    saprobic_substrate_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
 
 
-class FungiParasiticHost(BaseModel, HasReportConsensus):
+class FungiParasiticHost(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'fungi_parasitic_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    parasitic_host_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
 
 
 class EcologyType(Tag):
