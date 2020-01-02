@@ -53,3 +53,9 @@ class HasLength:
     @length.setter
     def length(self, value: ureg.Quantity):
         _length = str(value)
+
+
+class HasTag:
+    @declared_attr
+    def tag_id(self):
+        return Column(Integer, ForeignKey('tag.id'), primary_key=True)
