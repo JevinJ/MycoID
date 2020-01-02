@@ -1,19 +1,6 @@
 from enum import Enum, auto
 
 
-class EcologyType(Enum):
-    mycorrhizal = auto()
-    saprobic = auto()
-    parasitic = auto()
-
-
-class ClusteringHabit(Enum):
-    singular = auto()
-    gregarious = auto()
-    troop = auto()
-    caespitose = auto()
-
-
 class EdibilityType(Enum):
     choice = auto()
     edible = auto()
