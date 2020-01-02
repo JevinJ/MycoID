@@ -41,10 +41,10 @@ class GillColor(BaseModel, HasReportConsensus):
 class GillAttachment(BaseModel, HasReportConsensus):
     __tablename__ = 'gill_attachment'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
-    value = Column(Enum(GillAttachmentType))
+    value = Column(Enum(GillAttachmentType), primary_key=True)
 
 
 class GillSpacing(BaseModel, HasReportConsensus):
     __tablename__ = 'gill_spacing'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
-    value = Column(Enum(GillSpacingType))
+    value = Column(Enum(GillSpacingType), primary_key=True)
