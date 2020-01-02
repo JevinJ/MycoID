@@ -29,5 +29,5 @@ class CapShape(BaseModel, HasTagId):
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
-class CapShapeType(BaseModel, Tag):
+class CapShapeType(Tag):
     __mapper_args___ = {'polymorphic_identity': 'cap_shape'}
