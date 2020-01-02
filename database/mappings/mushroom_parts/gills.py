@@ -22,7 +22,7 @@ class GillForking(BaseModel, HasReportConsensus):
     type = Column(Enum(GillForkingType), primary_key=True)
 
 
-class GillLamellulaeTiers(BaseModel, HasReportConsensus):
+class GillLamellulaeTiers(BaseModel):
     """The number of 'short gills'(Lamellulae) tiers. Lamellulae are gills
      that start at the margins of the cap but don't reach the stem. Each tier is
      a different distance to the stem. Tiers are usually 1-4, if they exist.
