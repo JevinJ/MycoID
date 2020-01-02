@@ -24,7 +24,7 @@ class EcologyTypes(BaseModel, HasReportConsensus):
     ecology_type = Column(Enum(EcologyType), primary_key=True)
 
 
-class ClusteringHabits(BaseModel, HasReportConsensus):
+class ClusteringHabits(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'clustering_habits'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     type = Column(Enum(ClusteringHabit), primary_key=True)
@@ -46,6 +46,11 @@ class FungiParasiticHost(BaseModel, HasReportConsensus):
     __tablename__ = 'fungi_parasitic_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
     parasitic_host_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
+
+
+class EcologyType(Tag):
+    """One of: mycorrhizal, parasitic, saprobic."""
+    __mapper_args___ = {'polymorphic_identity': 'ecology_type'}
 
 
 class MycorrhizalHost(Tag):
