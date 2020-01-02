@@ -56,3 +56,7 @@ class HymeniumAttachmentType(Tag):
 
 class GillSpacingType(Tag):
     __mapper_args___ = {'polymorphic_identity': 'gill_spacing_type'}
+
+
+class GillEdgeType(Tag):
+    __mapper_args___ = {'polymorphic_identity': 'gill_edge_type'}
