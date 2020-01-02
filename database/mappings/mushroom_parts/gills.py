@@ -12,6 +12,7 @@ class Gills(BaseModel):
     attachment = relationship('GillAttachment')
     closeness = relationship('GillSpacing')
     color = relationship('GillColor')
+    edge = relationship('GillEdge')
     forking = relationship('GillForking')
     lamellulae_tiers = relationship('GillLamellulaeTiers')
 
@@ -43,6 +44,11 @@ class GillAttachment(BaseModel, HasReportConsensus, HasTag):
 
 class GillSpacing(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'gill_spacing'
+    fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
+
+
+class GillEdge(BaseModel, HasReportConsensus, HasTag):
+    __tablename__ = 'gill_edge'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
