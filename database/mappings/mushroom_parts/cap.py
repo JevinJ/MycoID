@@ -26,6 +26,7 @@ class CapColor(BaseModel, HasReportConsensus, HasColor):
 
 
 class CapShape(BaseModel, HasTagId):
+    __tablename__ = 'cap_shapes'
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
