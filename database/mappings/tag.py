@@ -2,7 +2,8 @@ from database.db_base import BaseModel
 from sqlalchemy import Column, Integer, String
 
 
-class TagTable(BaseModel):
+class Tag(BaseModel):
+    __tablename__ = 'tag'
     id = Column(Integer, primary_key=True)
     type = Column(String)
     name = Column(String(64))
