@@ -55,7 +55,7 @@ class HasLength:
         _length = str(value)
 
 
-class HasTag:
+class HasTagId:
     @declared_attr
     def tag_id(self):
         return Column(Integer, ForeignKey('tag.id'), primary_key=True)
