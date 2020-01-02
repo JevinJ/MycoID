@@ -1,6 +1,5 @@
-from ...mixins import HasReportConsensus
+from database.mixins import HasReportConsensus, HasTag
 from database.db_base import BaseModel
-from database.enums import GillAttachmentType, GillSpacingType, GillForkingType
 from sqlalchemy import Column, ForeignKey, Integer, Enum
 from sqlalchemy.orm import relationship
 
@@ -16,10 +15,9 @@ class Gills(BaseModel):
     lamellulae_tiers = relationship('GillLamellulaeTiers')
 
 
-class GillForking(BaseModel, HasReportConsensus):
+class GillForking(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'gill_forking'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
-    type = Column(Enum(GillForkingType), primary_key=True)
 
 
 class GillLamellulaeTiers(BaseModel):
@@ -38,13 +36,11 @@ class GillColor(BaseModel, HasReportConsensus):
     color_id = Column(Integer, ForeignKey('colors.id'), primary_key=True)
 
 
-class GillAttachment(BaseModel, HasReportConsensus):
+class GillAttachment(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'gill_attachment'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
-    value = Column(Enum(GillAttachmentType), primary_key=True)
 
 
-class GillSpacing(BaseModel, HasReportConsensus):
+class GillSpacing(BaseModel, HasReportConsensus, HasTag):
     __tablename__ = 'gill_spacing'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
-    value = Column(Enum(GillSpacingType), primary_key=True)
