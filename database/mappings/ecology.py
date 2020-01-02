@@ -1,6 +1,7 @@
 from database.db_base import BaseModel
 from database.enums import EcologyType, ClusteringHabit
-from database.mixins import HasReportConsensus, TagTable
+from database.mappings.tag import Tag
+from database.mixins import HasReportConsensus
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -32,31 +33,31 @@ class ClusteringHabits(BaseModel, HasReportConsensus):
 class FungiMycorrhizalHost(BaseModel, HasReportConsensus):
     __tablename__ = 'fungi_mycorrhizal_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    mycorrhizal_host_id = Column(Integer, ForeignKey('mycorrhizal_hosts.id'), primary_key=True)
+    mycorrhizal_host_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
 
 
 class FungiSaprobicSubstrate(BaseModel, HasReportConsensus):
     __tablename__ = 'fungi_saprobic_substrates'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    saprobic_substrate_id = Column(Integer, ForeignKey('saprobic_substrates.id'), primary_key=True)
+    saprobic_substrate_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
 
 
 class FungiParasiticHost(BaseModel, HasReportConsensus):
     __tablename__ = 'fungi_parasitic_hosts'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
-    parasitic_host_id = Column(Integer, ForeignKey('parasitic_hosts.id'), primary_key=True)
+    parasitic_host_id = Column(Integer, ForeignKey('tag.id'), primary_key=True)
 
 
-class MycorrhizalHost(BaseModel, TagTable):
+class MycorrhizalHost(Tag):
     """Organisms which a fungus grows with symbiotically."""
-    __tablename__ = 'mycorrhizal_hosts'
+    __mapper_args___ = {'polymorphic_identity': 'mycorrhizal_host'}
 
 
-class SaprobicSubstrate(BaseModel, TagTable):
+class SaprobicSubstrate(Tag):
     """Substrates a saprophytic fungus consumes."""
-    __tablename__ = 'saprobic_substrates'
+    __mapper_args___ = {'polymorphic_identity': 'saprobic_substrate'}
 
 
-class ParasiticHost(BaseModel, TagTable):
+class ParasiticHost(Tag):
     """Hosts which a fungus parasitizes."""
-    __tablename__ = 'parasitic_hosts'
+    __mapper_args___ = {'polymorphic_identity': 'parasitic_host'}
