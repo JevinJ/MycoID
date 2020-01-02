@@ -9,6 +9,7 @@ from .mushroom_parts.stem import *
 from .mushroom_parts.veil import *
 from .smell import *
 from .spores import *
+from .tag import *
 from .taste import *
 from .taxon import *
 from .wikipedia_url import *
