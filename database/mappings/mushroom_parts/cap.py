@@ -1,4 +1,4 @@
-from ...mixins import HasWidth, HasReportConsensus, HasTagId
+from ...mixins import HasWidth, HasReportConsensus, HasTagId, HasColor
 from database.mappings import Tag
 from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
@@ -20,10 +20,9 @@ class CapDimensions(BaseModel, HasWidth):
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
-class CapColor(BaseModel, HasReportConsensus):
+class CapColor(BaseModel, HasReportConsensus, HasColor):
     __tablename__ = 'cap_colors'
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
-    color_id = Column(Integer, ForeignKey('colors.id'), primary_key=True)
 
 
 class CapShape(BaseModel, HasTagId):
