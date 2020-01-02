@@ -53,8 +53,3 @@ class HasLength:
     @length.setter
     def length(self, value: ureg.Quantity):
         _length = str(value)
-
-
-class TagTable:
-    id = Column(Integer, primary_key=True)
-    name = Column(String(64))
