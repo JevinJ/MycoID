@@ -1,5 +1,5 @@
 from database.mappings import Tag
-from database.mixins import HasReportConsensus, HasTag, HasColor
+from database.mixins import HasReportConsensus, HasTagId, HasColor
 from database.db_base import BaseModel
 from sqlalchemy import Column, ForeignKey, Integer
 from sqlalchemy.orm import relationship
@@ -18,7 +18,7 @@ class Gills(BaseModel):
     texture = relationship('GillTexture')
 
 
-class GillForking(BaseModel, HasReportConsensus, HasTag):
+class GillForking(BaseModel, HasReportConsensus, HasTagId):
     __tablename__ = 'gill_forking'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
@@ -38,22 +38,22 @@ class GillColor(BaseModel, HasReportConsensus, HasColor):
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
-class GillAttachment(BaseModel, HasReportConsensus, HasTag):
+class GillAttachment(BaseModel, HasReportConsensus, HasTagId):
     __tablename__ = 'gill_attachment'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
-class GillSpacing(BaseModel, HasReportConsensus, HasTag):
+class GillSpacing(BaseModel, HasReportConsensus, HasTagId):
     __tablename__ = 'gill_spacing'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
-class GillEdge(BaseModel, HasReportConsensus, HasTag):
+class GillEdge(BaseModel, HasReportConsensus, HasTagId):
     __tablename__ = 'gill_edge'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
-class GillTexture(BaseModel, HasReportConsensus, HasTag):
+class GillTexture(BaseModel, HasReportConsensus, HasTagId):
     __tablename__ = 'gill_texture'
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
