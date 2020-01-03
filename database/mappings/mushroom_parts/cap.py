@@ -31,4 +31,4 @@ class CapShape(BaseModel, HasTagId):
 
 
 class CapShapeType(Tag):
-    __mapper_args___ = {'polymorphic_identity': 'cap_shape'}
+    pass

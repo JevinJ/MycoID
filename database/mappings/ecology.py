@@ -44,19 +44,19 @@ class FungiParasiticHost(BaseModel, HasReportConsensus, HasTagId):
 
 class EcologyType(Tag):
     """One of: mycorrhizal, parasitic, saprobic."""
-    __mapper_args___ = {'polymorphic_identity': 'ecology_type'}
+    pass
 
 
 class MycorrhizalHost(Tag):
     """Organisms which a fungus grows with symbiotically."""
-    __mapper_args___ = {'polymorphic_identity': 'mycorrhizal_host'}
+    pass
 
 
 class SaprobicSubstrate(Tag):
     """Substrates a saprophytic fungus consumes."""
-    __mapper_args___ = {'polymorphic_identity': 'saprobic_substrate'}
+    pass
 
 
 class ParasiticHost(Tag):
     """Hosts which a fungus parasitizes."""
-    __mapper_args___ = {'polymorphic_identity': 'parasitic_host'}
+    pass

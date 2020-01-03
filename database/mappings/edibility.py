@@ -17,4 +17,4 @@ class FungiEdibilityType(BaseModel, HasTagId):
 
 
 class EdibilityType(Tag):
-    __mapper_args__ = {'polymorphic_identity': 'edibility'}
+    pass
