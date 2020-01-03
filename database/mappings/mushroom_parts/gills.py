@@ -58,17 +58,7 @@ class GillTexture(BaseModel, HasReportConsensus, HasTagId):
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
-class GillForkingType(Tag):
-    __mapper_args___ = {'polymorphic_identity': 'gill_forking_type'}
-
-
-class HymeniumAttachmentType(Tag):
-    __mapper_args___ = {'polymorphic_identity': 'hymenium_attachment_type'}
-
-
-class GillSpacingType(Tag):
-    __mapper_args___ = {'polymorphic_identity': 'gill_spacing_type'}
-
-
-class GillEdgeType(Tag):
-    __mapper_args___ = {'polymorphic_identity': 'gill_edge_type'}
+GillForkingType = Tag.new_tag_type('GillForkingType')
+HymeniumAttachmentType = Tag.new_tag_type('HymeniumAttachmentType')
+GillSpacingType = Tag.new_tag_type('GillSpacingType')
+GillEdgeType = Tag.new_tag_type('GillEdgeType')
