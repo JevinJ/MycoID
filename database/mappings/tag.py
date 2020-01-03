@@ -1,5 +1,6 @@
 from database.db_base import BaseModel
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declared_attr
 
 
 class Tag(BaseModel):
@@ -9,4 +10,8 @@ class Tag(BaseModel):
     name = Column(String(64))
     description = Column(String)
 
-    __mapper_args___ = {'polymorphic_on': type}
+    @declared_attr
+    def __mapper_args__(self):
+        if self.__name__ == 'Tag':
+            return {'polymorphic_on': self.type}
+        return {'polymorphic_identity': self.__name__}
