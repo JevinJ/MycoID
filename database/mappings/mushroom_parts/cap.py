@@ -10,7 +10,7 @@ class Cap(BaseModel):
     __tablename__ = 'caps'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     diameters = relationship('CapDimensions')
-    colors = relationship('CapColor')
+    colors = relationship('FungiCapColor')
     shape = relationship('CapShape')
 
 
@@ -20,7 +20,7 @@ class CapDimensions(BaseModel, HasWidth):
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
-class CapColor(BaseModel, HasReportConsensus, HasColor):
+class FungiCapColor(BaseModel, HasReportConsensus, HasColor):
     __tablename__ = 'cap_colors'
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
