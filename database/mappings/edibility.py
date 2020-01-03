@@ -12,6 +12,7 @@ class Edibility(BaseModel):
 
 
 class FungiEdibilityType(BaseModel, HasTagId):
+    __tablename__ = 'fungi_edibility_types'
     fungi_id = Column(Integer, ForeignKey('edibility.fungi_id'), primary_key=True)
 
 
