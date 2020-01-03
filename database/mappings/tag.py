@@ -15,7 +15,3 @@ class Tag(BaseModel):
         if self.__name__ == 'Tag':
             return {'polymorphic_on': self.type}
         return {'polymorphic_identity': self.__name__}
-
-    @classmethod
-    def new_tag_type(cls, class_name):
-        return type(class_name, (cls,), {})

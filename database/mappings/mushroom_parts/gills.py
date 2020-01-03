@@ -58,7 +58,17 @@ class GillTexture(BaseModel, HasReportConsensus, HasTagId):
     fungi_id = Column(Integer, ForeignKey('gills.fungi_id'), primary_key=True)
 
 
-GillForkingType = Tag.new_tag_type('GillForkingType')
-HymeniumAttachmentType = Tag.new_tag_type('HymeniumAttachmentType')
-GillSpacingType = Tag.new_tag_type('GillSpacingType')
-GillEdgeType = Tag.new_tag_type('GillEdgeType')
+class GillForkingType(Tag):
+    pass
+
+
+class HymeniumAttachmentType(Tag):
+    pass
+
+
+class GillSpacingType(Tag):
+    pass
+
+
+class GillEdgeType(Tag):
+    pass
