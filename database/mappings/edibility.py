@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 class Edibility(BaseModel):
     __tablename__ = 'edibility'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    type = relationship('EdibilityType')
+    type = relationship('FungiEdibilityType')
 
 
 class FungiEdibilityType(BaseModel, HasTagId):
