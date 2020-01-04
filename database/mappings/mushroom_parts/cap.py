@@ -20,7 +20,7 @@ class CapDimensions(BaseModel, HasWidth):
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
-class FungiCapColor(BaseModel, HasReportConsensus, HasColor):
+class FungusCapColor(BaseModel, HasReportConsensus, HasColor):
     __tablename__ = 'cap_colors'
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
