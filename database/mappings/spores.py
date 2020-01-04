@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 class Spores(BaseModel):
     """Description of a mushrooms' spores."""
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
-    color = relationship('SporeColor')
+    color = relationship('Color', secondary='spore_color')
     mezlers_reaction = Column(Enum)
     dimensions = relationship('SporeDimensions')
     shape = Column(Enum)
