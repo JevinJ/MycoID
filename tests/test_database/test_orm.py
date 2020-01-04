@@ -34,3 +34,15 @@ class TestTag:
         db_session.add(tag)
         db_session.commit()
         assert db_session.query(Tag).first().description == 'some description'
+
+
+class TestCap:
+    def test_should_link_fungus_with_cap_shape(self, db_session):
+        fungus = Fungus()
+        cap_shape = CapShape(name='flat')
+        add_and_commit(db_session, fungus)
+        add_and_commit(db_session, cap_shape)
+        fungus_cap_shape = FungusCapShape(fungus_id=fungus.id, tag_id=cap_shape.id)
+        add_and_commit(db_session, fungus_cap_shape)
+        result = db_session.query(FungusCapShape).first()
+        assert result.fungus_id == fungus.id and result.tag_id == cap_shape.id
