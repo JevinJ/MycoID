@@ -10,7 +10,7 @@ class Cap(BaseModel):
     __tablename__ = 'caps'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     diameters = relationship('CapDimensions')
-    colors = relationship('FungiCapColor')
+    colors = relationship('Color', secondary='FungiCapColor')
     shape = relationship('CapShape', secondary='FungusCapShape')
 
 
