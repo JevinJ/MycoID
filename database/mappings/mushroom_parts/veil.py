@@ -4,7 +4,6 @@ from sqlalchemy import Column, Enum, Integer, ForeignKey
 
 class PartialVeil(BaseModel):
     """Description of a mushrooms' partial veil."""
-    __tablename__ = 'partial_veils'
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     color = Column(Enum)
     type = Column(Enum)
@@ -13,7 +12,6 @@ class PartialVeil(BaseModel):
 
 class UniversalVeil(BaseModel):
     """Description of a mushrooms' universal veil(volva)."""
-    __tablename__ = 'universal_veils'
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     type = Column(Enum)
     remnant_type = Column(Enum)  # Remnant of a universal veil being warts, patches or powder

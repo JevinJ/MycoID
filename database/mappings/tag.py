@@ -5,7 +5,6 @@ from sqlalchemy.ext.declarative import declared_attr
 
 
 class Tag(BaseModel):
-    __tablename__ = 'tag'
     id = Column(Integer, primary_key=True)
     type = Column(String)
     name = Column(String(64))
