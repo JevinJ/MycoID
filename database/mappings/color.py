@@ -1,4 +1,5 @@
 from database.db_base import BaseModel
+from database.mixins import HasReportConsensus
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy_utils.types.color import ColorType
@@ -11,7 +12,7 @@ class Color(BaseModel):
     value = Column(ColorType)
 
 
-class FungusColorMapping(BaseModel):
+class FungusColorMapping(BaseModel, HasReportConsensus):
     __abstract__ = True
 
     @declared_attr
