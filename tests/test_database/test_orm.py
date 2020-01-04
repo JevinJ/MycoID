@@ -15,3 +15,14 @@ for _, obj in inspect.getmembers(sys.modules[__name__], predicate=inspect.isclas
 def test_should_instantiate_all_orms(orm_class):
     orm_class()
 
+
+class TestTag:
+    def test_should_add_with_name(self, db_session):
+        tag = Tag(name='flat')
+        db_session.add(tag)
+        db_session.commit()
+
+    def test_should_add_with_name_and_description(self, db_session):
+        tag = Tag(name='flat', description='some description')
+        db_session.add(tag)
+        db_session.commit()
