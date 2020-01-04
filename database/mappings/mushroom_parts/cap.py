@@ -1,6 +1,6 @@
-from database.mixins import HasWidth, HasReportConsensus, HasTagId, HasColor
+from database.mixins import HasWidth, HasReportConsensus, HasColor
 from database.mappings.tag import Tag, FungusTagMapping
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from database.db_base import BaseModel
 
