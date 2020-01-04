@@ -17,14 +17,6 @@ class Tag(BaseModel):
             return {'polymorphic_on': self.type}
         return {'polymorphic_identity': self.__name__}
 
-    @staticmethod
-    def new_tag_type(type_name):
-        """
-        :param type_name: The name of the mapper, must be identical to the variable being assigned to.
-        :return: A new mapping class representing type of tag.
-        """
-        return type(type_name, (Tag,), {})
-
 
 class FungusTagMapping(BaseModel, HasReportConsensus):
     __abstract__ = True
