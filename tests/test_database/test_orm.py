@@ -11,6 +11,12 @@ for _, obj in inspect.getmembers(sys.modules[__name__], predicate=inspect.isclas
         all_orms.append(obj)
 
 
+def add_and_commit(db_session, mapped_object):
+    """Add and commit an sqlalchemy mapped object to db_session"""
+    db_session.add(mapped_object)
+    db_session.commit()
+
+
 @pytest.mark.parametrize('orm_class', all_orms)
 def test_should_instantiate_all_orms(orm_class):
     orm_class()
