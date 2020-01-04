@@ -27,3 +27,4 @@ class TestTag:
         tag = Tag(description='some description')
         db_session.add(tag)
         db_session.commit()
+        assert db_session.query(Tag).first().description == 'some description'
