@@ -21,6 +21,7 @@ class TestTag:
         tag = Tag(name='flat')
         db_session.add(tag)
         db_session.commit()
+        assert db_session.query(Tag).first().name == 'flat'
 
     def test_should_add_with_name_and_description(self, db_session):
         tag = Tag(name='flat', description='some description')
