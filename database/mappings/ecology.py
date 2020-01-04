@@ -1,6 +1,5 @@
 from database.db_base import BaseModel
-from database.mappings.tag import Tag
-from database.mixins import HasReportConsensus, HasTagId
+from database.mappings.tag import FungusTagMapping, Tag
 from sqlalchemy import Column, Integer, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -9,37 +8,41 @@ class Ecology(BaseModel):
     """Description of a mushrooms' habitat & ecology."""
     __tablename__ = 'ecology'
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
-    types = relationship('EcologyTypes')
-    clustering_habit = relationship('ClusteringHabits')
+    types = relationship('EcologyType', secondary='fungus_ecology_type')
+    clustering_habit = relationship('ClusteringHabit', secondary='fungus_clustering_habit')
     in_area_type = Column(Enum)
-    mycorrhizal_hosts = relationship('FungiMycorrhizalHost')
-    saprobic_substrates = relationship('FungiSaprobicSubstrate')
-    parasitic_hosts = relationship('FungiParasiticHost')
+    mycorrhizal_hosts = relationship('MycorrhizalHost', secondary='fungus_mycorrhizal_host')
+    saprobic_substrates = relationship('SaprobicSubstrate', secondary='fungus_saprobic_substrate')
+    parasitic_hosts = relationship('ParasiticHost', secondary='fungus_parasitic_host')
 
 
-class EcologyTypes(BaseModel, HasReportConsensus, HasTagId):
-    __tablename__ = 'ecology_types'
+class FungusEcologyType(FungusTagMapping):
+    __tablename__ = 'fungus_ecology_type'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
 
 
-class ClusteringHabits(BaseModel, HasReportConsensus, HasTagId):
-    __tablename__ = 'clustering_habits'
+class FungusClusteringHabit(FungusTagMapping):
+    __tablename__ = 'fungus_clustering_habit'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
 
 
-class FungiMycorrhizalHost(BaseModel, HasReportConsensus, HasTagId):
-    __tablename__ = 'fungi_mycorrhizal_hosts'
+class FungusMycorrhizalHost(FungusTagMapping):
+    __tablename__ = 'fungus_mycorrhizal_host'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
 
 
-class FungiSaprobicSubstrate(BaseModel, HasReportConsensus, HasTagId):
-    __tablename__ = 'fungi_saprobic_substrates'
+class FungusSaprobicSubstrate(FungusTagMapping):
+    __tablename__ = 'fungus_saprobic_substrate'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
 
 
-class FungiParasiticHost(BaseModel, HasReportConsensus, HasTagId):
-    __tablename__ = 'fungi_parasitic_hosts'
+class FungusParasiticHost(FungusTagMapping):
+    __tablename__ = 'fungus_parasitic_host'
     fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+
+
+class ClusteringHabit(Tag):
+    pass
 
 
 class EcologyType(Tag):

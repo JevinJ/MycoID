@@ -1,4 +1,5 @@
-from database.mixins import HasColor, HasHeight, HasWidth
+from database.mixins import HasHeight, HasWidth
+from database.mappings.color import FungusColorMapping
 from database.db_base import BaseModel
 from sqlalchemy import Column, Enum, Integer, ForeignKey
 from sqlalchemy.orm import relationship
@@ -12,8 +13,8 @@ class Stem(BaseModel):
     dimensions = relationship('StemDimensions')
 
 
-class StemColor(BaseModel, HasColor):
-    __tablename__ = 'stem_colors'
+class StemColor(FungusColorMapping):
+    __tablename__ = 'stem_color'
     fungi_id = Column(Integer, ForeignKey('stems.fungi_id'))
 
 
