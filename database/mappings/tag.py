@@ -30,8 +30,8 @@ class FungusTagMapping(BaseModel, HasReportConsensus):
     __abstract__ = True
 
     @declared_attr
-    def fungi_id(self):
-        return Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    def fungus_id(self):
+        return Column(Integer, ForeignKey('fungus.id'), primary_key=True)
 
     @declared_attr
     def tag_id(self):

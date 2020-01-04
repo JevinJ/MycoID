@@ -3,6 +3,5 @@ from sqlalchemy import Column, Enum, Integer, ForeignKey
 
 
 class Taste(BaseModel):
-    __tablename__ = 'tastes'
-    fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     taste = Column(Enum)

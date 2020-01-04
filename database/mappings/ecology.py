@@ -6,8 +6,7 @@ from sqlalchemy.orm import relationship
 
 class Ecology(BaseModel):
     """Description of a mushrooms' habitat & ecology."""
-    __tablename__ = 'ecology'
-    fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     types = relationship('EcologyType', secondary='fungus_ecology_type')
     clustering_habit = relationship('ClusteringHabit', secondary='fungus_clustering_habit')
     in_area_type = Column(Enum)
@@ -17,28 +16,23 @@ class Ecology(BaseModel):
 
 
 class FungusEcologyType(FungusTagMapping):
-    __tablename__ = 'fungus_ecology_type'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
 
 
 class FungusClusteringHabit(FungusTagMapping):
-    __tablename__ = 'fungus_clustering_habit'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
 
 
 class FungusMycorrhizalHost(FungusTagMapping):
-    __tablename__ = 'fungus_mycorrhizal_host'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
 
 
 class FungusSaprobicSubstrate(FungusTagMapping):
-    __tablename__ = 'fungus_saprobic_substrate'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
 
 
 class FungusParasiticHost(FungusTagMapping):
-    __tablename__ = 'fungus_parasitic_host'
-    fungi_id = Column(Integer, ForeignKey('ecology.fungi_id'), primary_key=True)
+    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
 
 
 class ClusteringHabit(Tag):
