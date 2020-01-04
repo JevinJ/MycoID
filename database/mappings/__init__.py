@@ -12,4 +12,5 @@ from .spores import *
 from .tag import *
 from .taste import *
 from .taxon import *
+from .texture import *
 from .wikipedia_url import *
