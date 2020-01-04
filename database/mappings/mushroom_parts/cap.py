@@ -1,5 +1,5 @@
 from database.mixins import HasWidth, HasReportConsensus, HasTagId, HasColor
-from database.mappings import Tag
+from database.mappings.tag import Tag, FungusTagMapping
 from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
 from database.db_base import BaseModel
@@ -11,7 +11,7 @@ class Cap(BaseModel):
     fungi_id = Column(Integer, ForeignKey('fungi.id'), primary_key=True)
     diameters = relationship('CapDimensions')
     colors = relationship('FungiCapColor')
-    shape = relationship('CapShape', )
+    shape = relationship('CapShape', secondary='FungusCapShape')
 
 
 class CapDimensions(BaseModel, HasWidth):
@@ -25,10 +25,6 @@ class FungiCapColor(BaseModel, HasReportConsensus, HasColor):
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
-class FungusCapShape(BaseModel, HasTagId):
-    __tablename__ = 'fungus_cap_shapes'
-    fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
+FungusCapShape = FungusTagMapping.new_mapping('FungusCapShape', 'fungus_cap_shape', 'caps.fungi_id')
 
-
-class CapShape(Tag):
-    pass
+CapShape = Tag.new_tag_type('CapShape')
