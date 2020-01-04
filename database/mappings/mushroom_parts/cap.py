@@ -25,8 +25,8 @@ class FungiCapColor(BaseModel, HasReportConsensus, HasColor):
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
-class FungiCapShape(BaseModel, HasTagId):
-    __tablename__ = 'cap_shapes'
+class FungusCapShape(BaseModel, HasTagId):
+    __tablename__ = 'fungus_cap_shapes'
     fungi_id = Column(Integer, ForeignKey('caps.fungi_id'), primary_key=True)
 
 
