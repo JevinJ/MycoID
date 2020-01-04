@@ -13,12 +13,6 @@ class HasReportConsensus:
     report_consensus = Column(Integer, default=1, nullable=False)
 
 
-class HasColor:
-    @declared_attr
-    def color_id(self):
-        return Column(Integer, ForeignKey('colors.id'), primary_key=True)
-
-
 class HasWidth:
     _width = Column(String(32))
 
@@ -53,9 +47,3 @@ class HasLength:
     @length.setter
     def length(self, value: ureg.Quantity):
         _length = str(value)
-
-
-class HasTagId:
-    @declared_attr
-    def tag_id(self):
-        return Column(Integer, ForeignKey('tag.id'), primary_key=True)
