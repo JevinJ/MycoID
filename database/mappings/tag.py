@@ -17,6 +17,14 @@ class Tag(BaseModel):
             return {'polymorphic_on': self.type}
         return {'polymorphic_identity': self.__name__}
 
+    @staticmethod
+    def new_tag_type(type_name):
+        """
+        :param type_name: The name of the mapper, must be identical to the variable being assigned to.
+        :return: A new mapping class representing type of tag.
+        """
+        return type(type_name, (Tag,), {})
+
 
 class FungusTagMapping(BaseModel, HasReportConsensus):
     __abstract__ = True
@@ -31,6 +39,12 @@ class FungusTagMapping(BaseModel, HasReportConsensus):
 
     @staticmethod
     def new_mapping(mapping_name, table_name, fungi_id_column: str):
+        """
+        :param mapping_name: The name of the mapper, must be identical to the variable being assigned to.
+        :param table_name: The name of the table.
+        :param fungi_id_column: The location of the Foreign key to use as fungi_id.
+        :return: A new junction table.
+        """
         return type(mapping_name, (FungusTagMapping,), {
             '__tablename__': table_name,
             'fungi_id': Column(Integer, ForeignKey(fungi_id_column), primary_key=True)
