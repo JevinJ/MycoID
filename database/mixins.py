@@ -1,6 +1,5 @@
 from unit_registry import ureg
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
