@@ -22,16 +22,3 @@ class FungusColorMapping(BaseModel, HasReportConsensus):
     @declared_attr
     def color_id(self):
         return Column(Integer, ForeignKey('colors.id'), primary_key=True)
-
-    @staticmethod
-    def new_mapping(mapping_name, table_name, fungi_id_column: str):
-        """
-        :param mapping_name: The name of the mapper, must be identical to the variable being assigned to.
-        :param table_name: The name of the table.
-        :param fungi_id_column: The location of the Foreign key to use as fungi_id.
-        :return: A new junction table.
-        """
-        return type(mapping_name, (FungusColorMapping,), {
-            '__tablename__': table_name,
-            'fungi_id': Column(Integer, ForeignKey(fungi_id_column), primary_key=True)
-        })
