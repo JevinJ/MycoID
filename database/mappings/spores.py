@@ -1,5 +1,6 @@
-from ..mixins import HasWidth, HasLength, HasReportConsensus
+from ..mixins import HasWidth, HasLength
 from database.db_base import BaseModel
+from database.mappings.color import FungusColorMapping
 from sqlalchemy import Column, Enum, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -19,7 +20,6 @@ class SporeDimensions(BaseModel, HasWidth, HasLength):
     fungus_id = Column(Integer, ForeignKey('spores.fungus_id'), primary_key=True)
 
 
-class SporeColor(BaseModel, HasReportConsensus):
+class SporeColor(FungusColorMapping):
     fungus_id = Column(Integer, ForeignKey('spores.fungus_id'), primary_key=True)
-    color_id = Column(Integer, ForeignKey('color.id'), primary_key=True)
 
