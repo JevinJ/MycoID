@@ -26,5 +26,4 @@ class FungiCapColor(BaseModel, HasReportConsensus, HasColor):
 
 
 FungusCapShape = FungusTagMapping.new_mapping('FungusCapShape', 'fungus_cap_shape', 'caps.fungi_id')
-
 CapShape = Tag.new_tag_type('CapShape')
