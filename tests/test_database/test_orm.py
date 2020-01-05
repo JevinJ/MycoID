@@ -48,7 +48,6 @@ class TestTag:
 
 
 class TestFungusTagMapping:
-    """Testing some concrete implementations of FungusTagMapping."""
     @pytest.mark.parametrize('fungus_tag_orm', all_fungus_tag_mapping_orms)
     def test_ids_should_be_foreign(self, fungus_tag_orm):
         assert len(fungus_tag_orm.fungus_id.foreign_keys) > 0
