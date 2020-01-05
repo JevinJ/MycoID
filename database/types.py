@@ -16,7 +16,7 @@ class QuantityType(TypeDecorator):
         return value
 
     def process_result_value(self, value, dialect):
-        if value:
+        if value is not None:
             return ureg.Quantity(value)
         return value
 
