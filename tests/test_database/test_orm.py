@@ -39,7 +39,7 @@ class TestTag:
         assert db_session.query(Tag).first().name == 'flat'
 
     @pytest.mark.parametrize('tag_type', all_tag_orms)
-    def test_tag_name_should_be_non_nullable(self, tag_type):
+    def test_name_should_not_be_nullable(self, tag_type):
         assert tag_type.name.nullable is False
 
     def test_should_add_with_description(self, db_session):
