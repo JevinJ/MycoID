@@ -27,7 +27,6 @@ def db_session():
     return Session(bind=engine)
 
 
-
 @pytest.mark.parametrize('orm_class', all_orms)
 def test_should_instantiate_all_orms(orm_class):
     orm_class()
