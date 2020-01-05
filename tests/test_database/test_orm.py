@@ -18,6 +18,13 @@ def add_and_commit(db_session, *mapped_objects):
     db_session.commit()
 
 
+def db_session():
+    from database.db_base import Session
+    from tests.test_database.conftest import engine
+    return Session(bind=engine)
+
+
+
 @pytest.mark.parametrize('orm_class', all_orms)
 def test_should_instantiate_all_orms(orm_class):
     orm_class()
