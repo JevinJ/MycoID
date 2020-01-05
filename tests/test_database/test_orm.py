@@ -26,14 +26,12 @@ def test_should_instantiate_all_orms(orm_class):
 class TestTag:
     def test_should_add_with_name(self, db_session):
         tag = Tag(name='flat')
-        db_session.add(tag)
-        db_session.commit()
+        add_and_commit(db_session, tag)
         assert db_session.query(Tag).first().name == 'flat'
 
     def test_should_add_with_description(self, db_session):
         tag = Tag(description='some description')
-        db_session.add(tag)
-        db_session.commit()
+        add_and_commit(db_session, tag)
         assert db_session.query(Tag).first().description == 'some description'
 
 
@@ -41,8 +39,7 @@ class TestCap:
     def test_should_link_fungus_with_cap_shape(self, db_session):
         fungus = Fungus()
         cap_shape = CapShape(name='flat')
-        add_and_commit(db_session, fungus)
-        add_and_commit(db_session, cap_shape)
+        add_and_commit(db_session, fungus, cap_shape)
         fungus_cap_shape = FungusCapShape(fungus_id=fungus.id, tag_id=cap_shape.id)
         add_and_commit(db_session, fungus_cap_shape)
         result = db_session.query(FungusCapShape).first()
