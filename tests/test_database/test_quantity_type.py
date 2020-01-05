@@ -9,7 +9,7 @@ import pytest
 
 class QuantityExample(BaseModel):
     id = Column(Integer, primary_key=True)
-    quantity = Column(QuantityType)
+    quantity = Column(QuantityType(unit_registry=ureg))
 
 
 @given(scalar_quantity=integers())
