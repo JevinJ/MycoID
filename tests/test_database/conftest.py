@@ -1,16 +1,18 @@
-from database.db_base import BaseModel
 from database.mappings import *
 from pytest import fixture
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-engine = create_engine('sqlite:///:memory:')
-BaseModel.metadata.create_all(bind=engine)
+@fixture
+def engine():
+    engine = create_engine('sqlite:///:memory:')
+    BaseModel.metadata.create_all(bind=engine)
+    return engine
 
 
 @fixture(scope='module')
-def db_connection():
+def db_connection(engine):
     connection = engine.connect()
     yield connection
     connection.close()
