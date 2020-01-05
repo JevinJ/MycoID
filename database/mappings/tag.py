@@ -8,7 +8,7 @@ class Tag(BaseModel):
     __tablename__ = 'tag'
     id = Column(Integer, primary_key=True)
     type = Column(String)
-    name = Column(String(64))
+    name = Column(String(64), nullable=False)
     description = Column(String)
 
     @declared_attr
