@@ -53,5 +53,3 @@ class TestFungusTagMapping:
         assert len(fungus_tag_orm.tag_id.foreign_keys) > 0
 
 
-class TestCap:
-    pass
