@@ -10,6 +10,8 @@ for _, obj in inspect.getmembers(sys.modules[__name__], predicate=inspect.isclas
     if isinstance(obj, DeclarativeMeta):
         all_orms.append(obj)
 
+all_tag_orms = [cls for cls in all_orms if issubclass(cls, Tag)]
+
 
 def add_and_commit(db_session, *mapped_objects):
     """Add and commit an sqlalchemy mapped object to db_session"""
@@ -35,6 +37,10 @@ class TestTag:
         tag = Tag(name='flat')
         add_and_commit(db_session, tag)
         assert db_session.query(Tag).first().name == 'flat'
+
+    @pytest.mark.parametrize('tag_type', all_tag_orms)
+    def test_tag_name_should_be_non_nullable(self, tag_type):
+        assert tag_type.name.nullable is False
 
     def test_should_add_with_description(self, db_session):
         tag = Tag(description='some description')
