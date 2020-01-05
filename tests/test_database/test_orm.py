@@ -38,6 +38,14 @@ class TestTag:
     def test_name_should_not_be_nullable(self, tag_type):
         assert tag_type.name.nullable is False
 
+    def test_tag_mapper_args(self):
+        assert Tag.__mapper_args__['polymorphic_on'].key == 'type'
+
+    @pytest.mark.parametrize('tag_type', all_tag_orms)
+    def test_derived_mapper_args(self, tag_type):
+        if tag_type != Tag:
+            assert tag_type.__mapper_args__['polymorphic_identity'] == tag_type.__name__
+
 
 class TestFungusTagMapping:
     """Testing some concrete implementations of FungusTagMapping."""
