@@ -13,9 +13,13 @@ class QuantityExample(BaseModel):
 
 
 @given(scalar_quantity=integers())
-@settings(max_examples=20)
-def test_should_insert_quantity(engine, scalar_quantity):
+@pytest.mark.parametrize('quantity_type', [ureg.meter, ureg.millimeter, ureg.kilometer])
+@settings(max_examples=5)
+def test_should_insert_quantity(engine, scalar_quantity, quantity_type):
     session = Session(bind=engine)
-    quantity = QuantityExample(quantity=scalar_quantity * ureg.meter)
-    session.add(quantity)
+    quantity_to_insert = scalar_quantity * quantity_type
+    quantity_example = QuantityExample(quantity=quantity_to_insert)
+    session.add(quantity_example)
     session.commit()
+    result = session.query(QuantityExample).order_by(QuantityExample.id.desc()).first()
+    assert result.quantity == quantity_to_insert
