@@ -23,6 +23,7 @@ def test_should_insert_quantity(engine, scalar_quantity, quantity_type):
     session.commit()
     result = session.query(QuantityExample).order_by(QuantityExample.id.desc()).first()
     assert result.quantity == quantity_to_insert
+    assert result.quantity.magnitude == quantity_to_insert.magnitude
 
 
 @given(scalar_quantity=floats(allow_infinity=False, allow_nan=False))
@@ -36,3 +37,4 @@ def test_should_insert_quantity_floats(engine, scalar_quantity, quantity_type):
     session.commit()
     result = session.query(QuantityExample).order_by(QuantityExample.id.desc()).first()
     assert result.quantity == quantity_to_insert
+    assert result.quantity.magnitude == quantity_to_insert.magnitude
