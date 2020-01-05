@@ -35,7 +35,8 @@ class TestTag:
         assert db_session.query(Tag).first().description == 'some description'
 
 
-class TestCap:
+class TestFungusTagMapping:
+    """Testing some concrete implementations of FungusTagMapping."""
     def test_should_link_fungus_with_cap_shape(self, db_session):
         fungus = Fungus()
         cap_shape = CapShape(name='flat')
@@ -44,3 +45,7 @@ class TestCap:
         add_and_commit(db_session, fungus_cap_shape)
         result = db_session.query(FungusCapShape).first()
         assert result.fungus_id == fungus.id and result.tag_id == cap_shape.id
+
+
+class TestCap:
+    pass
