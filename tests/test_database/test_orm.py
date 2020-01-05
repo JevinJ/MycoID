@@ -11,9 +11,10 @@ for _, obj in inspect.getmembers(sys.modules[__name__], predicate=inspect.isclas
         all_orms.append(obj)
 
 
-def add_and_commit(db_session, mapped_object):
+def add_and_commit(db_session, *mapped_objects):
     """Add and commit an sqlalchemy mapped object to db_session"""
-    db_session.add(mapped_object)
+    for obj in mapped_objects:
+        db_session.add(obj)
     db_session.commit()
 
 
