@@ -25,7 +25,7 @@ def test_should_insert_quantity(engine, scalar_quantity, quantity_type):
     assert result.quantity == quantity_to_insert
 
 
-@given(scalar_quantity=floats(allow_infinity=False))
+@given(scalar_quantity=floats(allow_infinity=False, allow_nan=False))
 @pytest.mark.parametrize('quantity_type', [ureg.meter, ureg.millimeter, ureg.kilometer])
 @settings(max_examples=5)
 def test_should_insert_quantity_floats(engine, scalar_quantity, quantity_type):
