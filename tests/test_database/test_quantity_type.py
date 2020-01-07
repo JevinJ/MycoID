@@ -12,7 +12,7 @@ class QuantityExample(BaseModel):
 
 
 @given(scalar_quantity=one_of(integers(), floats(allow_infinity=False, allow_nan=False)))
-@settings(deadline=None, max_examples=400)
+@settings(deadline=None)
 def test_should_insert_quantity(engine, scalar_quantity):
     session = Session(bind=engine)
     session.query(QuantityExample).delete()
