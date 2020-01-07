@@ -12,6 +12,7 @@ for _, obj in inspect.getmembers(sys.modules[__name__], predicate=inspect.isclas
 
 all_tag_orms = [cls for cls in all_orms if issubclass(cls, Tag)]
 all_fungus_tag_mapping_orms = [cls for cls in all_orms if issubclass(cls, FungusTagMapping)]
+all_fungus_color_mapping_orms = [cls for cls in all_orms if issubclass(cls, FungusColorMapping)]
 
 
 def add_and_commit(db_session, *mapped_objects):
@@ -52,4 +53,10 @@ class TestFungusTagMapping:
         assert len(fungus_tag_orm.fungus_id.foreign_keys) > 0
         assert len(fungus_tag_orm.tag_id.foreign_keys) > 0
 
+
+class TestColorTagMapping:
+    @pytest.mark.parametrize('fungus_tag_orm', all_fungus_color_mapping_orms)
+    def test_ids_should_be_foreign(self, fungus_tag_orm):
+        assert len(fungus_tag_orm.fungus_id.foreign_keys) > 0
+        assert len(fungus_tag_orm.color_id.foreign_keys) > 0
 
