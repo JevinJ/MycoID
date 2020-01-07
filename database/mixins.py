@@ -1,6 +1,6 @@
 from unit_registry import ureg
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy import Column, Integer
+from database.types import QuantityType
 
 
 class HasReportConsensus:
@@ -13,36 +13,12 @@ class HasReportConsensus:
 
 
 class HasWidth:
-    _width = Column(String(32))
-
-    @hybrid_property
-    def width(self) -> ureg.Quantity:
-        return ureg.Quantity(self._width)
-
-    @width.setter
-    def width(self, value: ureg.Quantity):
-        _width = str(value)
+    width = Column(QuantityType(unit_registry=ureg))
 
 
 class HasHeight:
-    _height = Column(String(32))
-
-    @hybrid_property
-    def height(self) -> ureg.Quantity:
-        return ureg.Quantity(self._height)
-
-    @height.setter
-    def height(self, value: ureg.Quantity):
-        _height = str(value)
+    height = Column(QuantityType(unit_registry=ureg))
 
 
 class HasLength:
-    _length = Column(String(32))
-
-    @hybrid_property
-    def length(self) -> ureg.Quantity:
-        return ureg.Quantity(self._length)
-
-    @length.setter
-    def length(self, value: ureg.Quantity):
-        _length = str(value)
+    length = Column(QuantityType(unit_registry=ureg))
