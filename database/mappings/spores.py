@@ -13,7 +13,7 @@ class Spores(BaseModel):
     mezlers_reaction = Column(Enum)
     dimensions = relationship('SporeDimensions')
     shape = relationship('SporeShape', secondary='fungus_spore_shape')
-    ornamentation = Column(Enum)
+    ornamentation = relationship('SporeOrnamentation', secondary='fungus_spore_ornamentation')
 
 
 class SporeDimensions(BaseModel, HasWidth, HasLength):
@@ -29,5 +29,10 @@ class FungusSporeShape(FungusTagMapping):
     fungus_id = Column(Integer, ForeignKey('spores.fungus_id'), primary_key=True)
 
 
+class FungusSporeOrnamentation(FungusTagMapping):
+    fungus_id = Column(Integer, ForeignKey('spores.fungus_id'), primary_key=True)
+
+
 class SporeShape(Tag): pass
+class SporeOrnamentation(Tag): pass
 
