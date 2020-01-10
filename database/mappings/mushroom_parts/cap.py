@@ -23,8 +23,5 @@ class FungusCapColor(FungusColorMapping):
     fungus_id = Column(Integer, ForeignKey('cap.fungus_id'), primary_key=True)
 
 
-class FungusCapShape(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('cap.fungus_id'), primary_key=True)
-
-
+FungusCapShape = FungusTagMapping.new_mapping('FungusCapShape', fungus_id_column=Cap.fungus_id)
 class CapShape(Tag): pass

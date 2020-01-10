@@ -30,27 +30,16 @@ class FungusGillColor(FungusColorMapping):
     fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
 
 
-class FungusGillForking(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
-
-
-class FungusHymeniumAttachment(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
-
-
-class FungusGillSpacing(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
-
-
-class FungusGillEdge(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
-
-
-class FungusGillTexture(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
-
-
+FungusGillForking = FungusTagMapping.new_mapping('FungusGillForking', fungus_id_column=Gills.fungus_id)
 class GillForking(Tag): pass
+
+FungusHymeniumAttachment = FungusTagMapping.new_mapping('FungusHymeniumAttachment', fungus_id_column=Gills.fungus_id)
 class HymeniumAttachment(Tag): pass
+
+FungusGillSpacing = FungusTagMapping.new_mapping('FungusGillSpacing', fungus_id_column=Gills.fungus_id)
 class GillSpacing(Tag): pass
+
+FungusGillEdge = FungusTagMapping.new_mapping('FungusGillEdge', fungus_id_column=Gills.fungus_id)
 class GillEdge(Tag): pass
+
+FungusGillTexture = FungusTagMapping.new_mapping('FungusGillTexture', fungus_id_column=Gills.fungus_id)

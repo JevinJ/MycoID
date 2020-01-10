@@ -15,45 +15,25 @@ class Ecology(BaseModel):
     parasitic_hosts = relationship('ParasiticHost', secondary='fungus_parasitic_host')
 
 
-class FungusEcologyType(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
+FungusClusteringHabit = FungusTagMapping.new_mapping('FungusClusteringHabit', 'ecology.fungus_id')
+class ClusteringHabit(Tag): pass
 
-
-class FungusClusteringHabit(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
-
-
-class FungusMycorrhizalHost(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
-
-
-class FungusSaprobicSubstrate(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
-
-
-class FungusParasiticHost(FungusTagMapping):
-    fungus_id = Column(Integer, ForeignKey('ecology.fungus_id'), primary_key=True)
-
-
-class ClusteringHabit(Tag):
-    pass
-
-
+FungusEcologyType = FungusTagMapping.new_mapping('FungusEcologyType', 'ecology.fungus_id')
 class EcologyType(Tag):
     """One of: mycorrhizal, parasitic, saprobic."""
     pass
 
-
+FungusMycorrhizalHost = FungusTagMapping.new_mapping('FungusMycorrhizalHost', 'ecology.fungus_id')
 class MycorrhizalHost(Tag):
     """Organisms which a fungus grows with symbiotically."""
     pass
 
-
+FungusSaprobicSubstrate = FungusTagMapping.new_mapping('FungusSaprobicSubstrate', 'ecology.fungus_id')
 class SaprobicSubstrate(Tag):
     """Substrates a saprophytic fungus consumes."""
     pass
 
-
+FungusParasiticHost = FungusTagMapping.new_mapping('FungusParasiticHost', 'ecology.fungus_id')
 class ParasiticHost(Tag):
     """Hosts which a fungus parasitizes."""
     pass
