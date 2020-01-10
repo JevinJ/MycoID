@@ -21,3 +21,17 @@ class FungusColorMapping(BaseModel, HasReportConsensus):
     @declared_attr
     def color_id(self):
         return Column(Integer, ForeignKey('color.id'), primary_key=True)
+
+    @staticmethod
+    def new_mapping(class_name, fungus_id_column: Column=None):
+        """
+        :param class_name: The name of the class being created, must be identical to
+         the name of the variable which this is being assigned to.
+        :param fungus_id_column: The column containing the fungus id of the 'left' table,
+         the table being mapped to the tags.
+        :return: Return a new derived class.
+        """
+        if fungus_id_column is None:
+            return type(class_name, (FungusColorMapping,), {})
+        return type(class_name, (FungusColorMapping,),
+                    {'fungus_id': Column(Integer, ForeignKey(fungus_id_column), primary_key=True)})
