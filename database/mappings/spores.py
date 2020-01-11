@@ -22,8 +22,8 @@ class SporeDimensions(BaseModel, HasWidth, HasLength):
 
 SporeColor = FungusColorMapping.new_mapping('SporeColor', fungus_id_column=Spores.fungus_id)
 
-FungusSporeShape = FungusTagMapping.new_mapping('FungusSporeShape', 'spores.fungus_id')
+FungusSporeShape = FungusTagMapping.new_mapping('FungusSporeShape', fungus_id_column=Spores.fungus_id)
 class SporeShape(Tag): pass
 
-FungusSporeOrnamentation = FungusTagMapping.new_mapping('FungusSporeOrnamentation', 'spores.fungus_id')
+FungusSporeOrnamentation = FungusTagMapping.new_mapping('FungusSporeOrnamentation', fungus_id_column=Spores.fungus_id)
 class SporeOrnamentation(Tag): pass
