@@ -26,8 +26,7 @@ class GillLamellulaeTiers(BaseModel):
     value = Column(Integer)
 
 
-class FungusGillColor(FungusColorMapping):
-    fungus_id = Column(Integer, ForeignKey('gills.fungus_id'), primary_key=True)
+FungusGillColor = FungusColorMapping.new_mapping('FungusGillColor', fungus_id_column=Gills.fungus_id)
 
 
 FungusGillForking = FungusTagMapping.new_mapping('FungusGillForking', fungus_id_column=Gills.fungus_id)

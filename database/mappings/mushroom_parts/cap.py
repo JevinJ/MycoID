@@ -18,10 +18,7 @@ class CapDimensions(BaseModel, HasWidth):
     id = Column(Integer, primary_key=True)
     fungus_id = Column(Integer, ForeignKey('cap.fungus_id'), primary_key=True)
 
-
-class FungusCapColor(FungusColorMapping):
-    fungus_id = Column(Integer, ForeignKey('cap.fungus_id'), primary_key=True)
-
+FungusCapColor = FungusColorMapping.new_mapping('FungusCapColor', fungus_id_column=Cap.fungus_id)
 
 FungusCapShape = FungusTagMapping.new_mapping('FungusCapShape', fungus_id_column=Cap.fungus_id)
 class CapShape(Tag): pass

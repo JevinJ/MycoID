@@ -11,10 +11,7 @@ class Stem(BaseModel):
     type = Column(Enum)
     dimensions = relationship('StemDimensions')
 
-
-class StemColor(FungusColorMapping):
-    fungus_id = Column(Integer, ForeignKey('stem.fungus_id'))
-
+StemColor = FungusColorMapping.new_mapping('StemColor', fungus_id_column=Stem.fungus_id)
 
 class StemDimensions(BaseModel, HasWidth, HasHeight):
     id = Column(Integer, primary_key=True)

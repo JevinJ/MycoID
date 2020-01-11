@@ -9,14 +9,9 @@ class Latex(BaseModel):
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
 
 
-class FungusLatexInitialColor(FungusColorMapping):
-    fungus_id = Column(Integer, ForeignKey('latex.fungus_id'), primary_key=True)
+FungusLatexInitialColor = FungusColorMapping.new_mapping('FungusLatexInitialColor', fungus_id_column=Latex.fungus_id)
 
+# TODO, rename, naming inconsistency
+LatexOxidizedColor = FungusColorMapping.new_mapping('LatexStainColor', fungus_id_column=Latex.fungus_id)
 
-class LatexOxidizedColor(FungusColorMapping):
-    fungus_id = Column(Integer, ForeignKey('latex.fungus_id'), primary_key=True)
-
-
-class LatexStainColor(FungusColorMapping):
-    """Laxex frequently stains the flesh of a mushroom, sometimes unrelated colors."""
-    fungus_id = Column(Integer, ForeignKey('latex.fungus_id'), primary_key=True)
+LatexStainColor = FungusColorMapping.new_mapping('LatexStainColor', fungus_id_column=Latex.fungus_id)
