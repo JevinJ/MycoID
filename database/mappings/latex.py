@@ -11,7 +11,6 @@ class Latex(BaseModel):
 
 FungusLatexInitialColor = FungusColorMapping.new_mapping('FungusLatexInitialColor', fungus_id_column=Latex.fungus_id)
 
-# TODO, rename, naming inconsistency
-LatexOxidizedColor = FungusColorMapping.new_mapping('LatexStainColor', fungus_id_column=Latex.fungus_id)
+FungusLatexOxidizedColor = FungusColorMapping.new_mapping('FungusLatexStainColor', fungus_id_column=Latex.fungus_id)
 
-LatexStainColor = FungusColorMapping.new_mapping('LatexStainColor', fungus_id_column=Latex.fungus_id)
+FungusLatexStainColor = FungusColorMapping.new_mapping('FungusLatexStainColor', fungus_id_column=Latex.fungus_id)
