@@ -1,13 +1,12 @@
 from database.db_base import BaseModel
 from database.mixins import HasReportConsensus
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy_utils.types.color import ColorType
 
 
 class Color(BaseModel):
     id = Column(Integer, primary_key=True)
-    name = Column(String(32))
     value = Column(ColorType)
 
 
