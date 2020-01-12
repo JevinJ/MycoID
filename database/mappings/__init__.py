@@ -7,7 +7,7 @@ from .mushroom_parts.cap import *
 from .mushroom_parts.gills import *
 from .mushroom_parts.stem import *
 from .mushroom_parts.veil import *
-from .smell import *
+from .odor import *
 from .spores import *
 from .tag import *
 from .taste import *
