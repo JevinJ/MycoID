@@ -9,7 +9,7 @@ class Ecology(BaseModel):
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     types = relationship('EcologyType', secondary='fungus_ecology_type')
     fruiting_habits = relationship('FruitingHabit', secondary='fungus_clustering_habit')
-    in_area_type = relationship('HabitatType', secondary='fungus_habitat_type')
+    habitat_types = relationship('HabitatType', secondary='fungus_habitat_type')
     mycorrhizal_hosts = relationship('MycorrhizalHost', secondary='fungus_mycorrhizal_host')
     saprobic_substrates = relationship('SaprobicSubstrate', secondary='fungus_saprobic_substrate')
     parasitic_hosts = relationship('ParasiticHost', secondary='fungus_parasitic_host')
