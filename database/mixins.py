@@ -1,6 +1,6 @@
 from unit_registry import ureg
 from sqlalchemy import Column, Integer
-from database.types import QuantityType
+from database.column_types import QuantityType
 
 
 class HasReportConsensus:

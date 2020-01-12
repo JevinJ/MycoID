@@ -1,5 +1,5 @@
 from database.db_base import BaseModel, Session
-from database.types import QuantityType
+from database.column_types import QuantityType
 from hypothesis import given, settings
 from hypothesis.strategies import integers, floats, one_of
 from sqlalchemy import Column, Integer
