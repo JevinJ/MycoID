@@ -1,6 +1,6 @@
 from database.db_base import BaseModel
 from database.mappings.tag import FungusTagMapping, Tag
-from sqlalchemy import Column, Integer, Enum, ForeignKey
+from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
 
