@@ -8,15 +8,15 @@ class Ecology(BaseModel):
     """Description of a mushrooms' habitat & ecology."""
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     types = relationship('EcologyType', secondary='fungus_ecology_type')
-    clustering_habit = relationship('ClusteringHabit', secondary='fungus_clustering_habit')
+    fruiting_habits = relationship('FruitingHabit', secondary='fungus_clustering_habit')
     in_area_type = Column(Enum)
     mycorrhizal_hosts = relationship('MycorrhizalHost', secondary='fungus_mycorrhizal_host')
     saprobic_substrates = relationship('SaprobicSubstrate', secondary='fungus_saprobic_substrate')
     parasitic_hosts = relationship('ParasiticHost', secondary='fungus_parasitic_host')
 
 
-FungusClusteringHabit = FungusTagMapping.new_mapping('FungusClusteringHabit', 'ecology.fungus_id')
-class ClusteringHabit(Tag): pass
+FungusFruitingHabit = FungusTagMapping.new_mapping('FungusFruitingHabit', 'ecology.fungus_id')
+class FruitingHabit(Tag): pass
 
 FungusEcologyType = FungusTagMapping.new_mapping('FungusEcologyType', 'ecology.fungus_id')
 class EcologyType(Tag):
