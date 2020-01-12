@@ -14,7 +14,7 @@ class QuantityType(TypeDecorator):
         return self._unit_registry.Quantity
 
     def process_literal_param(self, value, dialect):
-        pass
+        raise NotImplementedError
 
     def process_bind_param(self, value, dialect):
         if value is not None and isinstance(value, self._unit_registry.Quantity):
