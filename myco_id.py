@@ -1,4 +1,4 @@
-class MycoMatch:
+class MycoID:
     pass
 
 
@@ -8,7 +8,7 @@ if __name__ == '__main__':
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
-    engine = create_engine('sqlite:///mycomatch.db')
+    engine = create_engine('sqlite:///myco_id.db')
     BaseModel.metadata.create_all(bind=engine)
     session = sessionmaker(bind=engine)()
-    app = MycoMatch()
+    app = MycoID()
