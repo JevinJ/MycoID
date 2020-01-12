@@ -1,7 +1,5 @@
-from database.db_base import BaseModel
-from sqlalchemy import Column, Enum, Integer, ForeignKey
+from database.mappings.tag import FungusTagMapping, Tag
 
 
-class Smell(BaseModel):
-    fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
-    smell = Column(Enum)
+FungusSmell = FungusTagMapping.new_mapping('FungusSmell')
+class Smell(Tag): pass
