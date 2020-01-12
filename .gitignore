@@ -170,3 +170,6 @@ fabric.properties
 # Markdown Navigator plugin
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
+
+# Ignore .db files while mappings are still being developed.
+*.db
