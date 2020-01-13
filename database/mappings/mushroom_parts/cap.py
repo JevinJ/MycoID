@@ -11,6 +11,7 @@ class Cap(BaseModel):
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     diameters = relationship('CapDimensions')
     colors = relationship('Color', secondary='fungus_cap_color')
+    koh_reaction = relationship('Color', secondary='fungus_cap_koh_reaction')
     shape = relationship('CapShape', secondary='fungus_cap_shape')
 
 
@@ -22,3 +23,5 @@ FungusCapColor = FungusColorMapping.new_mapping('FungusCapColor', fungus_id_colu
 
 FungusCapShape = FungusTagMapping.new_mapping('FungusCapShape', fungus_id_column=Cap.fungus_id)
 class CapShape(Tag): pass
+
+FungusCapKohReaction = FungusTagMapping.new_mapping('FungusCapKohReaction', fungus_id_column=Cap.fungus_id)
