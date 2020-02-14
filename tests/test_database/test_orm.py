@@ -58,5 +58,5 @@ class TestColorTagMapping:
     @pytest.mark.parametrize('fungus_tag_orm', all_fungus_color_mapping_orms)
     def test_ids_should_be_foreign(self, fungus_tag_orm):
         assert len(fungus_tag_orm.fungus_id.foreign_keys) > 0
-        assert len(fungus_tag_orm.color_id.foreign_keys) > 0
+        assert len(fungus_tag_orm.tag_id.foreign_keys) > 0
 
