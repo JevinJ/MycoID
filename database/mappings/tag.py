@@ -29,8 +29,8 @@ class AbstractFungusTagMapping(BaseModel, HasReportConsensus):
     def tag_id(self):
         raise NotImplementedError
 
-    @staticmethod
-    def new_mapping(class_name, fungus_id_column: Column = None):
+    @classmethod
+    def new_mapping(cls, class_name, fungus_id_column: Column=None):
         """
         :param class_name: The name of the class being created, must be identical to
          the name of the variable which this is being assigned to.
@@ -39,12 +39,12 @@ class AbstractFungusTagMapping(BaseModel, HasReportConsensus):
         :return: Return a new derived class.
         """
         if fungus_id_column is None:
-            return type(class_name, (FungusTagMapping,), {})
-        return type(class_name, (FungusTagMapping,),
+            return type(class_name, (cls,), {})
+        return type(class_name, (cls,),
                     {'fungus_id': Column(Integer, ForeignKey(fungus_id_column), primary_key=True)})
 
 
-class FungusTagMapping(BaseModel, HasReportConsensus):
+class FungusTagMapping(AbstractFungusTagMapping):
     __abstract__ = True
 
     @declared_attr
@@ -54,17 +54,3 @@ class FungusTagMapping(BaseModel, HasReportConsensus):
     @declared_attr
     def tag_id(self):
         return Column(Integer, ForeignKey('tag.id'), primary_key=True)
-
-    @staticmethod
-    def new_mapping(class_name, fungus_id_column: Column=None):
-        """
-        :param class_name: The name of the class being created, must be identical to
-         the name of the variable which this is being assigned to.
-        :param fungus_id_column: The column containing the fungus id of the 'left' table,
-         the table being mapped to the tags.
-        :return: Return a new derived class.
-        """
-        if fungus_id_column is None:
-            return type(class_name, (FungusTagMapping,), {})
-        return type(class_name, (FungusTagMapping,),
-                    {'fungus_id': Column(Integer, ForeignKey(fungus_id_column), primary_key=True)})
