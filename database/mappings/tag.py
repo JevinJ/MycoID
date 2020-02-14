@@ -48,9 +48,5 @@ class FungusTagMapping(AbstractFungusTagMapping):
     __abstract__ = True
 
     @declared_attr
-    def fungus_id(self):
-        return Column(Integer, ForeignKey('fungus.id'), primary_key=True)
-
-    @declared_attr
     def tag_id(self):
         return Column(Integer, ForeignKey('tag.id'), primary_key=True)
