@@ -14,8 +14,8 @@ class FungusLatexColor(FungusColorMapping):
     pass
 
 
-class Bioluminescence(BaseModel):
-    fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
+class BioluminescenceType(Tag): pass
+FungusBioluminescenceType = FungusTagMapping.new_mapping('FungusBioluminescenceType')
 
 
 class Edibility(Tag): pass
