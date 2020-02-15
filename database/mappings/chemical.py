@@ -2,6 +2,7 @@ from database.mappings import BaseModel
 from database.mappings.tag import Tag
 from database.mixins import HasReportConsensus
 from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy.ext.declarative import declared_attr
 
 
 class ChemicalTestType(Tag): pass
@@ -11,6 +12,14 @@ class ChemicalTest(BaseModel, HasReportConsensus):
      applied to, so different parts need their own tables."""
     __abstract__ = True
 
-    fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
-    color_id = Column(Integer, ForeignKey('color.id'), primary_key=True)
-    type = Column(Integer, ForeignKey('tag.id'), primary_key=True)
+    @declared_attr
+    def fungus_id(self):
+        return Column(Integer, ForeignKey('fungus.id'), primary_key=True)
+
+    @declared_attr
+    def color_id(self):
+        return Column(Integer, ForeignKey('color.id'), primary_key=True)
+
+    @declared_attr
+    def type(self):
+        return Column(Integer, ForeignKey('tag.id'), primary_key=True)
