@@ -1,7 +1,5 @@
-from database.mappings import BaseModel
 from database.mappings.tag import FungusTagMapping, Tag
 from database.mappings.color import FungusColorMapping
-from sqlalchemy import Column, ForeignKey, Integer
 
 
 class Odor(Tag): pass
