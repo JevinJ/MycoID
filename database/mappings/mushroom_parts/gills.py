@@ -1,3 +1,4 @@
+from database.mappings.chemical import ChemicalTest
 from database.mappings.color import FungusColorMapping
 from database.mappings.tag import FungusTagMapping, Tag
 from database.db_base import BaseModel
@@ -42,3 +43,5 @@ FungusGillEdge = FungusTagMapping.new_mapping('FungusGillEdge', fungus_id_column
 class GillEdge(Tag): pass
 
 FungusGillTexture = FungusTagMapping.new_mapping('FungusGillTexture', fungus_id_column=Gills.fungus_id)
+
+class FungusGillChemicalTest(ChemicalTest): pass
