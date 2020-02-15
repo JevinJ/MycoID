@@ -3,7 +3,7 @@ from database.mappings.color import FungusColorMapping
 
 
 class Odor(Tag): pass
-FungusOdor = FungusTagMapping.new_mapping('FungusOdor', fungus_id_column='fungus.id')
+class FungusOdor(FungusTagMapping): pass
 
 
 class FungusLatexColor(FungusColorMapping):
@@ -13,15 +13,15 @@ class FungusLatexColor(FungusColorMapping):
 
 
 class BioluminescenceType(Tag): pass
-FungusBioluminescenceType = FungusTagMapping.new_mapping('FungusBioluminescenceType')
+class FungusBioluminescenceType(FungusTagMapping): pass
 
 
 class Edibility(Tag): pass
-FungusEdibilityType = FungusTagMapping.new_mapping('FungusEdibilityType')
+class FungusEdibilityType(FungusTagMapping): pass
 
 
 class Taste(Tag): pass
-FungusTaste = FungusTagMapping.new_mapping('FungusTaste')
+class FungusTaste(FungusTagMapping): pass
 
 
 class Texture(Tag): pass
