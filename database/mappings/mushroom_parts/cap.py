@@ -12,7 +12,7 @@ class Cap(BaseModel):
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     diameters = relationship('CapDimensions')
     colors = relationship('Color', secondary='fungus_cap_color')
-    koh_reaction = relationship('Color', secondary='fungus_cap_koh_reaction')
+    chemical_tests = relationship('Color', secondary='fungus_cap_chemical_test')
     shape = relationship('CapShape', secondary='fungus_cap_shape')
 
 
