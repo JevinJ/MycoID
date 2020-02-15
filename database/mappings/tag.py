@@ -30,7 +30,7 @@ class AbstractFungusTagMapping(BaseModel, HasReportConsensus):
         raise NotImplementedError
 
     @classmethod
-    def new_mapping(cls, class_name, fungus_id_column: Column=None):
+    def new_mapping(cls, class_name, fungus_id_column: [Column, str]=None):
         """
         :param class_name: The name of the class being created, must be identical to
          the name of the variable which this is being assigned to.
