@@ -1,5 +1,6 @@
 from database.mixins import HasWidth
 from database.mappings.tag import Tag, FungusTagMapping
+from database.mappings.chemical import ChemicalTest
 from database.mappings.color import FungusColorMapping
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
@@ -24,4 +25,4 @@ FungusCapColor = FungusColorMapping.new_mapping('FungusCapColor', fungus_id_colu
 FungusCapShape = FungusTagMapping.new_mapping('FungusCapShape', fungus_id_column=Cap.fungus_id)
 class CapShape(Tag): pass
 
-FungusCapKohReaction = FungusTagMapping.new_mapping('FungusCapKohReaction', fungus_id_column=Cap.fungus_id)
+class FungusCapChemicalTest(ChemicalTest): pass
