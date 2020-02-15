@@ -1,5 +1,6 @@
 from ..mixins import HasWidth, HasLength
 from database.db_base import BaseModel
+from database.mappings.chemical import ChemicalTest
 from database.mappings.color import FungusColorMapping
 from database.mappings.tag import FungusTagMapping, Tag
 from sqlalchemy import Column, Integer, ForeignKey
@@ -10,7 +11,7 @@ class Spores(BaseModel):
     """Description of a mushrooms' spores."""
     fungus_id = Column(Integer, ForeignKey('fungus.id'), primary_key=True)
     color = relationship('Color', secondary='spore_color')
-    mezler_reaction = relationship('Color', secondary='fungus_mezler_reaction')
+    mezler_reaction = relationship('Color', secondary='fungus_spore_chemical_test')
     dimensions = relationship('SporeDimensions')
     shape = relationship('SporeShape', secondary='fungus_spore_shape')
     ornamentation = relationship('SporeOrnamentation', secondary='fungus_spore_ornamentation')
@@ -25,7 +26,7 @@ SporeColor = FungusColorMapping.new_mapping('SporeColor', fungus_id_column=Spore
 FungusSporeShape = FungusTagMapping.new_mapping('FungusSporeShape', fungus_id_column=Spores.fungus_id)
 class SporeShape(Tag): pass
 
-FungusMezlerReaction = FungusTagMapping.new_mapping('FungusMezlerReaction', fungus_id_column=Spores.fungus_id)
+class FungusSporeChemicalTest(ChemicalTest): pass
 
 FungusSporeOrnamentation = FungusTagMapping.new_mapping('FungusSporeOrnamentation', fungus_id_column=Spores.fungus_id)
 class SporeOrnamentation(Tag): pass
