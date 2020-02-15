@@ -23,7 +23,7 @@ FungusEdibilityType = FungusTagMapping.new_mapping('FungusEdibilityType')
 
 
 class Taste(Tag): pass
-FungusTaste = FungusTagMapping.new_mapping('FungusTaste', fungus_id_column='fungus.id')
+FungusTaste = FungusTagMapping.new_mapping('FungusTaste')
 
 
 class Texture(Tag): pass
