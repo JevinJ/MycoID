@@ -1,4 +1,5 @@
 from database.mixins import HasHeight, HasWidth
+from database.mappings.chemical import ChemicalTest
 from database.mappings.color import FungusColorMapping
 from database.db_base import BaseModel
 from sqlalchemy import Column, Enum, Integer, ForeignKey
@@ -17,3 +18,5 @@ FungusStemColor = FungusColorMapping.new_mapping('FungusStemColor', fungus_id_co
 class StemDimensions(BaseModel, HasWidth, HasHeight):
     id = Column(Integer, primary_key=True)
     fungus_id = Column(Integer, ForeignKey('stem.fungus_id'), primary_key=True)
+
+class FungusStemChemicalTest(ChemicalTest): pass
