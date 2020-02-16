@@ -26,7 +26,8 @@ SporeColor = FungusColorMapping.new_mapping('SporeColor', fungus_id_column=Spore
 FungusSporeShape = FungusTagMapping.new_mapping('FungusSporeShape', fungus_id_column=Spores.fungus_id)
 class SporeShape(Tag): pass
 
-class FungusSporeChemicalTest(ChemicalTest): pass
+class FungusSporeChemicalTest(ChemicalTest):
+    fungus_id = Column(Integer, ForeignKey('spores.fungus_id'), primary_key=True)
 
 FungusSporeOrnamentation = FungusTagMapping.new_mapping('FungusSporeOrnamentation', fungus_id_column=Spores.fungus_id)
 class SporeOrnamentation(Tag): pass

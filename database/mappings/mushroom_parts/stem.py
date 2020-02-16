@@ -19,4 +19,5 @@ class StemDimensions(BaseModel, HasWidth, HasHeight):
     id = Column(Integer, primary_key=True)
     fungus_id = Column(Integer, ForeignKey('stem.fungus_id'), primary_key=True)
 
-class FungusStemChemicalTest(ChemicalTest): pass
+class FungusStemChemicalTest(ChemicalTest):
+    fungus_id = Column(Integer, ForeignKey('stem.fungus_id'), primary_key=True)
